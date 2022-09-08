@@ -6,10 +6,10 @@
 ** Overview
 - The dotfiles are managed using [[https://www.gnu.org/software/stow/][GNU Stow]]. The idea is simple:
   + For each folder, store/restore the config that's in that respective folder.
-  + Reason for having separate folders is that I can restore only the things I want rather and not all of them.
+  + Reason for having separate folders is that I can restore only the things I want rather than restoring all of them.
   + Again, why, because 2 main reasons:
-    a. My home PC contains fish shell and my office PC contains bash shell. So I make it generic rather than specialized. My fish config will all over the place in my office config, which I don't want.
-    b. Say, today my office uses Linux (thanksfully, because I love Linux), but let's say I switch to another org, which uses Windows, not all the linux config would work, So I define separate config folders for Windows.
+    a. My home PC contains fish shell and my office PC contains bash shell. So I make it generic rather than specialized. If not, then my fish config will all over the place in my office config, which I don't want.
+    b. Say, today my office uses Linux (thankfully, because I love Linux), but let's say I switch to some another organization, which uses Windows, so not all the linux config would work, hence I define separate config folders for Windows.
 
 *** How does it work ?
 

@@ -108,6 +108,7 @@ alias l='ls -CF'
 if [ -x /usr/bin/exa ]; then
     alias lse='exa -al -s extension --group-directories-first'
     alias lss='exa -al -s size --group-directories-first'
+    alias lsw='exa -aF -s type --group-directories-first'
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:
