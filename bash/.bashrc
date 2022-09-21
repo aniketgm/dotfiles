@@ -33,16 +33,14 @@ esac
 [[ -d "/mnt/c/Users/Aniket" ]] && WIN_HOME="/mnt/c/Users/Aniket"
 [[ -d "/mnt/d/SummuData" ]] && WIN_D_DRIVE="/mnt/d/SummuData"
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-shopt -s histappend
-shopt -s autocd
+shopt -s checkwinsize # Check the window size after each command, if necessary, update the values of LINES and COLUMNS.
+shopt -s histappend   # When the shell exits, append to the history file instead of overwriting it. 
+shopt -s autocd       # When a fodler is specified at commandline, cd into it automatically.
 #shopt -s globstar
 
-HISTCONTROL=ignoreboth:erasedups
-HISTSIZE=10000
-HISTFILESIZE=20000
+HISTCONTROL=ignoreboth:erasedups # Ignore both -- commands starting with space and duplicates and erase duplicates.
+HISTSIZE=10000                   # Number of lines of history.
+HISTFILESIZE=20000               # History file size in bytes.
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -105,6 +103,8 @@ fi
 alias ll='ls -alhF --group-directories-first'
 alias la='ls -A --group-directories-first'
 alias l='ls -CF'
+
+# Use exa, modern replacement for ls. [https://github.com/ogham/exa]
 if [ -x /usr/bin/exa ]; then
     alias lse='exa -al -s extension --group-directories-first'
     alias lss='exa -al -s size --group-directories-first'
@@ -115,15 +115,12 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# Store other aliases in .bash_aliases file
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# Store custom functions in .bash_functions
+# Store custom functions in .bash_functions file
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi

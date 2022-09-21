@@ -30,7 +30,6 @@ lvim.leader = "space"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.project.show_hidden = true
@@ -83,17 +82,17 @@ lvim.plugins = {
 
   -- ## Colorschemes
   -- ## ------------
-  -- { "folke/tokyonight.nvim" },
+  { "folke/tokyonight.nvim" },
   { "sainnhe/sonokai" },
-  {
-    "NTBBloodbath/doom-one.nvim",
-    config = function()
-      require('doom-one').setup({
-        italic_comments = true,
-        transparent_background = true
-      })
-    end
-  },
+  -- {
+  --   "NTBBloodbath/doom-one.nvim",
+  --   config = function()
+  --     require('doom-one').setup({
+  --       italic_comments = true,
+  --       transparent_background = true
+  --     })
+  --   end
+  -- },
   -- { "LunarVim/onedarker.nvim" },
   -- { "EdenEast/nightfox.nvim" },
   -- { "jacoborus/tender.vim" },
@@ -130,13 +129,13 @@ lvim.plugins = {
 -- vim.g.sonokai_transparent_background = 1
 -- vim.g.sonokai_style = 'espresso'
 -- vim.g.sonokai_enable_italic = 1
--- vim.g.tokyonight_style = 'night'
--- vim.g.tokyonight_italic_functions = 1
+vim.g.tokyonight_style = 'night'
+vim.g.tokyonight_italic_functions = 1
 
--- lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "tokyonight"
 -- lvim.colorscheme = "tender"
 -- lvim.colorscheme = "sonokai"
-lvim.colorscheme = "doom-one"
+-- lvim.colorscheme = "doom-one"
 
 -- # Auto-Session
 -- # ------------
