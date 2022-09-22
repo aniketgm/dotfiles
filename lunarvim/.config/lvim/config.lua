@@ -115,6 +115,11 @@ lvim.plugins = {
   },
   { "kdheepak/lazygit.nvim" },
   { "nvim-telescope/telescope-file-browser.nvim" },
+  {
+    "ghillb/cybu.nvim",
+    branch = "main",
+    requires = { "kyazdani42/nvim-web-devicons", "nvim-lua/plenary.nvim" },
+  }
 }
 
 -- #--------------------
@@ -129,8 +134,37 @@ lvim.plugins = {
 -- vim.g.sonokai_transparent_background = 1
 -- vim.g.sonokai_style = 'espresso'
 -- vim.g.sonokai_enable_italic = 1
-vim.g.tokyonight_style = 'night'
-vim.g.tokyonight_italic_functions = 1
+require("tokyonight").setup({
+  style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  transparent = false, -- Enable this to disable setting the background color
+  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = { italic = true },
+    variables = {},
+    -- Background styles. Can be "dark", "transparent" or "normal"
+    -- sidebars = "dark",     -- style for sidebars, see below
+    -- floats = "dark",       -- style for floating windows
+  },
+  -- sidebars = { "qf", "help" },       -- Set a darker background on sidebar-like windows. For e.g.: `["qf", "vista_kind", "terminal", "packer"]`
+  -- day_brightness = 0.3,              -- Adjust brightness of the colors of the **Day** style. From 0 to 1, for dull to vibrant colors
+  -- hide_inactive_statusline = false,  -- Hide inactive statuslines and replace them with a thin border instead.
+  -- Should work with the standard **StatusLine** and **LuaLine**.
+  -- dim_inactive = false,              -- Dims inactive windows
+  -- lualine_bold = false,              -- When `true`, section headers in the lualine theme will be bold
+
+  --- You can override specific color groups to use other groups or a hex color
+  --- function will be called with a ColorScheme table
+  -- @param colors ColorScheme
+  -- on_colors = function(colors) end,
+
+  --- You can override specific highlights to use other groups or a hex color
+  --- function will be called with a Highlights and ColorScheme table
+  -- @param highlights Highlights
+  -- @param colors ColorScheme
+  -- on_highlights = function(highlights, colors) end,
+})
 
 lvim.colorscheme = "tokyonight"
 -- lvim.colorscheme = "tender"
@@ -164,6 +198,19 @@ lvim.builtin.telescope.pickers.find_files.layout_config = { preview_width = 65 }
 require("telescope").load_extension "session-lens"
 require("telescope").load_extension "file_browser"
 
+-- # Cybu [Cycle Buffer]
+-- # -------------------
+require("cybu").setup({
+  position = {
+    max_win_height = 5,
+    max_win_width = 1.2
+  },
+  style = {
+    border = "rounded",
+    hide_buffer_id = true
+  }
+})
+
 -- #--------------------
 -- # Additional keymaps
 -- #--------------------
@@ -174,6 +221,10 @@ lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F2>"] = "<cmd>DiffviewToggleFiles<cr>"
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-m>"] = "<cmd>Telescope resume<cr>"
+lvim.keys.normal_mode["C-S-Tab"] = "<Plug>(CybuLastusedPrev)"
+lvim.keys.normal_mode["C-Tab"] = "<Plug>(CybuLastusedNext)"
+lvim.keys.normal_mode["H"] = "<Plug>(CybuPrev)"
+lvim.keys.normal_mode["L"] = "<Plug>(CybuNext)"
 
 -- To unmap a default keymapping: vim.keymap.del("n", "<C-Up>")
 -- Override a default keymapping: lvim.keys.normal_mode["<C-q>"] = ":q<cr>" OR vim.keymap.set("n", "<C-q>", ":q<cr>" )
