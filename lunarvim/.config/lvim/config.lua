@@ -140,7 +140,7 @@ require("tokyonight").setup({
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
   styles = {
     comments = { italic = true },
-    keywords = { italic = true },
+    keywords = {},
     functions = { italic = true },
     variables = {},
     -- Background styles. Can be "dark", "transparent" or "normal"

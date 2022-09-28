@@ -150,6 +150,7 @@ else
     echo ""
     echo "Seems non of colorscript by [DistroTube] OR fortune OR neofetch is installed."
     echo "Note you will be getting this same quote everytime bash prompt is launched."
+    echo "Also, Run the script in ~/bin folder to install the missing softwares, if not already."
 fi
 
 # TimeWarrior env var
@@ -159,8 +160,12 @@ fi
 # eval "$(jump shell)"
 
 # Zoxide shell (similar to Jump)
-eval "$(~/.local/bin/zoxide init bash)"
+if command -v zoxide &>/dev/null; then
+  eval "$(~/.local/bin/zoxide init bash)"
+fi
 
 # Starship Prompt
-eval "$(starship init bash)"
+if command -v starship &>/dev/null; then
+  eval "$(starship init bash)"
+fi
 

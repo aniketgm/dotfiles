@@ -9,7 +9,7 @@ truncation_symbol = "../"
 disabled = true
 
 # Replace the "❯" symbol in the prompt with "➜"
-[character]                            # The name of the module we are configuring is "character"
+[character] # The name of the module we are configuring is "character"
 success_symbol = "[➜ ](bold green)"
 error_symbol = "[➜ ](bold red)"
 # success_symbol = "[❄](bold green)"
@@ -35,7 +35,7 @@ style = "#f26942"
 
 [python]
 disabled = false
-format = "[${symbol}${pyenv_prefix}(${version}) ($virtualenv)]($style) "
+format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
 
 [nodejs]
 # disabled = true
