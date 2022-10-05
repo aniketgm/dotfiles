@@ -43,35 +43,35 @@ run_cmd() {
 }
 
 # Startup Zinrelo docker containers
-dkc() {
-    case "$1" in
-        u)
-            run_cmd "/home/aniketgm/codebase/src/zrldockerconf" "docker-compose up -d"
-            allContnrs=("zinrelodevapp_web_1" "zinrelodevapp_mongo_1" "zinrelodevapp_mongo-sec_1" "zinrelodevapp_mongo-arb_1" \
-                        "zinrelodevapp_monstache_1" "zinrelodevapp_celery_1" "zinrelodevapp_redis_1" "zinrelodevapp_elasticsearch_1")
-            for contr in ${allContnrs[@]}; do
-                if ! [[ $(docker ps --format "table {{.Names}}" | grep $contr) ]]; then
-                    echo -e "\e[38;5;197mError: $contr is not running !!\e[0m"
-                fi
-            done
-            ;;
-        d)
-            run_cmd "/home/aniketgm/codebase/src/zrldockerconf" "docker-compose down"
-            ;;
-        r)
-            run_cmd "/home/aniketgm/codebase/src/zrldockerconf" "docker-compose restart"
-            allContnrs=("zinrelodevapp_web_1" "zinrelodevapp_mongo_1" "zinrelodevapp_mongo-sec_1" "zinrelodevapp_mongo-arb_1" \
-                        "zinrelodevapp_monstache_1" "zinrelodevapp_celery_1" "zinrelodevapp_redis_1" "zinrelodevapp_elasticsearch_1")
-            for contr in ${allContnrs[@]}; do
-                if ! [[ $(docker ps --format "table {{.Names}}" | grep $contr) ]]; then
-                    echo -e "\e[38;5;197mError: $contr is not running !!\e[0m"
-                fi
-            done
-            ;;
-        *)
-            echo "Pass valid options. u (mean up) or d (means down) or r (means restart)"
-            ;;
-    esac
-}
+# dkc() {
+#     case "$1" in
+#         u)
+#             run_cmd "/home/aniketgm/codebase/src/zrldockerconf" "docker-compose up -d"
+#             allContnrs=("zinrelodevapp_web_1" "zinrelodevapp_mongo_1" "zinrelodevapp_mongo-sec_1" "zinrelodevapp_mongo-arb_1" \
+#                         "zinrelodevapp_monstache_1" "zinrelodevapp_celery_1" "zinrelodevapp_redis_1" "zinrelodevapp_elasticsearch_1")
+#             for contr in ${allContnrs[@]}; do
+#                 if ! [[ $(docker ps --format "table {{.Names}}" | grep $contr) ]]; then
+#                     echo -e "\e[38;5;197mError: $contr is not running !!\e[0m"
+#                 fi
+#             done
+#             ;;
+#         d)
+#             run_cmd "/home/aniketgm/codebase/src/zrldockerconf" "docker-compose down"
+#             ;;
+#         r)
+#             run_cmd "/home/aniketgm/codebase/src/zrldockerconf" "docker-compose restart"
+#             allContnrs=("zinrelodevapp_web_1" "zinrelodevapp_mongo_1" "zinrelodevapp_mongo-sec_1" "zinrelodevapp_mongo-arb_1" \
+#                         "zinrelodevapp_monstache_1" "zinrelodevapp_celery_1" "zinrelodevapp_redis_1" "zinrelodevapp_elasticsearch_1")
+#             for contr in ${allContnrs[@]}; do
+#                 if ! [[ $(docker ps --format "table {{.Names}}" | grep $contr) ]]; then
+#                     echo -e "\e[38;5;197mError: $contr is not running !!\e[0m"
+#                 fi
+#             done
+#             ;;
+#         *)
+#             echo "Pass valid options. u (mean up) or d (means down) or r (means restart)"
+#             ;;
+#     esac
+# }
 
 #TODO: Add a specialized cp function that can create directories if DEST directories don't exist

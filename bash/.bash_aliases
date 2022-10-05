@@ -28,10 +28,7 @@ alias gs='git status'
 
 # Docker
 alias dk='docker'
-# alias dkdp='docker exec -it zinrelodevapp_mongo_1 /bin/bash'
 # alias dkwp='docker exec -it zinrelodevapp_web_1 /bin/bash'
-# alias dkcl='docker logs zinrelodevapp_celery_1 --follow'
-# alias dkdl='docker logs zinrelodevapp_mongo_1 --follow'
 # alias dkwl='docker logs zinrelodevapp_web_1 --follow'
 alias dke='docker exec -it'
 alias dki='docker images'
