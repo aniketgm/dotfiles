@@ -38,7 +38,7 @@ lvim.builtin.which_key.mappings["S"] = {
   s = { "<cmd>SearchSession<cr>", "Show sessions" },
   k = { "<cmd>DeleteSession<cr>", "Kill/Delete current session" },
 }
-lvim.builtin.which_key.mappings["d"] = {
+lvim.builtin.which_key.mappings["gD"] = {
   name = "+Diffview",
   o = { "<cmd>DiffviewOpen -uno<cr>", "Open Diffview" },
   c = { "<cmd>DiffviewClose<cr>", "Close Diffview" },
@@ -65,7 +65,4 @@ lvim.builtin.which_key.mappings["bs"] = {
 }
 lvim.builtin.which_key.mappings["bS"] = {
   "<cmd>Telescope live_grep grep_open_files=true<cr>", "Search text in all buffers"
-}
-lvim.builtin.which_key.mappings["gg"] = {
-  "<cmd>LazyGit<cr>", "LazyGit"
 }
