@@ -160,9 +160,10 @@ fi
 # eval "$(jump shell)"
 
 # Zoxide shell (similar to Jump)
-if command -v zoxide &>/dev/null; then
-  eval "$(~/.local/bin/zoxide init bash)"
-fi
+# if command -v zoxide &>/dev/null; then
+#   eval "$(~/.local/bin/zoxide init bash)"
+# fi
+eval "$(~/.local/bin/zoxide init bash)"
 
 # Starship Prompt
 if command -v starship &>/dev/null; then

@@ -9,7 +9,6 @@ lvim.plugins = {
 
   -- ## Colorschemes
   -- ## ------------
-  { "folke/tokyonight.nvim" },
   { "sainnhe/sonokai" },
   -- {
   --   "NTBBloodbath/doom-one.nvim",
@@ -60,19 +59,7 @@ lvim.plugins = {
 -- vim.g.sonokai_transparent_background = 1
 -- vim.g.sonokai_style = 'espresso'
 -- vim.g.sonokai_enable_italic = 1
-require("tokyonight").setup({
-  style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  transparent = false, -- Enable this to disable setting the background color
-  terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-  styles = {
-    comments = {},
-    keywords = {},
-    functions = { italic = true },
-    variables = {},
-  },
-})
 
-lvim.colorscheme = "tokyonight"
 -- lvim.colorscheme = "sonokai"
 -- lvim.colorscheme = "doom-one"
 
@@ -82,8 +69,8 @@ require('auto-session').setup()
 
 -- # Telescope
 -- # ---------
-lvim.builtin.telescope.defaults.layout_strategy = "bottom_pane"
-lvim.builtin.telescope.defaults.sorting_strategy = "ascending"
+-- lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
+-- lvim.builtin.telescope.defaults.sorting_strategy = "descending"
 lvim.builtin.telescope.defaults.path_display = { truncate = true }
 -- lvim.builtin.telescope.defaults.winblend = 15
 lvim.builtin.telescope.pickers.current_buffer_fuzzy_find = { previewer = false }
@@ -94,6 +81,7 @@ lvim.builtin.telescope.pickers.live_grep = {
 }
 lvim.builtin.telescope.pickers.buffers = {
   sort_lastused = true,
+  previewer = false,
   mappings = {
     i = { ["<C-d>"] = "delete_buffer" }
   }

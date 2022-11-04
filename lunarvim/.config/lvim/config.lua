@@ -34,6 +34,7 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.project.show_hidden = true
 lvim.builtin.terminal.active = true
+lvim.builtin.theme.tokyonight.options.style = "moon"
 -- lvim.builtin.lualine.style = "default"
 -- lvim.builtin.bufferline.options.separator_style = "padded_slant"
 
