@@ -35,7 +35,7 @@ alias dki='docker images'
 alias dks='docker ps --format "table {{ .ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
 
 # Other aliases
-alias bat='batcat --style=numbers'
+alias bat='batcat --style=numbers,changes,header,grid'
 alias c='z'
 alias cls='clear'
 # alias dfl='/usr/bin/git --git-dir=$HOME/repos/dotfiles --work-tree=$HOME'

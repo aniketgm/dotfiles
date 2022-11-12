@@ -106,8 +106,8 @@ alias l='ls -CF'
 
 # Use exa, modern replacement for ls. [https://github.com/ogham/exa]
 if [ -x /usr/bin/exa ]; then
-    alias lse='exa -al -s extension --group-directories-first'
-    alias lss='exa -al -s size --group-directories-first'
+    alias lse='exa -alF -s extension --group-directories-first'
+    alias lss='exa -alF -s size --group-directories-first'
     alias lsw='exa -aF -s type --group-directories-first'
 fi
 
