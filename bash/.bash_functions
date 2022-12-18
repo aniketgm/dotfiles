@@ -20,7 +20,7 @@ ff() {
 }
 
 # Fuzzy folder switcher
-fd() {
+fdd() {
     FZF_OUTPUT=$(find . -type d | \
                  fzf --preview="ls -l --color=always --group-directories-first {}" \
                      --bind shift-up:preview-up,shift-down:preview-down \
@@ -28,19 +28,33 @@ fd() {
     [[ ! -z $FZF_OUTPUT ]] && cd $FZF_OUTPUT
 }
 
-# Local function will be unset below
-run_cmd() {
-    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-        ARG1=$1
-        ARG2=$2
+# Taskwarrior daily burndown chart on loop
+twb() {
+    if ! command -v task &>/dev/null; then
+        echo "taskwarrior not installed"
     else
-        echo "Argument missing"
+        while true
+        do
+            clear
+            task burndown.daily
+            sleep 5
+        done
     fi
-    CURR_DIR=$PWD
-    cd $ARG1
-    $ARG2
-    cd $CURR_DIR
 }
+
+# Go into the directory specified by $1 and run the command specified by $2
+# run_cmd() {
+#     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+#         ARG1=$1
+#         ARG2=$2
+#     else
+#         echo "Argument missing"
+#     fi
+#     CURR_DIR=$PWD
+#     cd $ARG1
+#     $ARG2
+#     cd $CURR_DIR
+# }
 
 # Startup Zinrelo docker containers
 # dkc() {

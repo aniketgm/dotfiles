@@ -167,6 +167,6 @@ eval "$(~/.local/bin/zoxide init bash)"
 
 # Starship Prompt
 if command -v starship &>/dev/null; then
-  eval "$(starship init bash)"
+    eval "$(starship init bash)"
 fi
 
