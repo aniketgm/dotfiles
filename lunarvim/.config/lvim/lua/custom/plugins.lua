@@ -25,6 +25,7 @@ lvim.plugins = {
   { "itchyny/calendar.vim" },
   { "ellisonleao/glow.nvim" },
   { "davidgranstrom/nvim-markdown-preview" },
+  { "sindrets/diffview.nvim" },
   -- { "petertriho/nvim-scrollbar" },
   -- { "folke/zen-mode.nvim" },
 
@@ -38,14 +39,7 @@ lvim.plugins = {
   -- },
   {
     "rmagatti/session-lens",
-    requires = {
-      "rmagatti/auto-session",
-      "nvim-telescope/telescope.nvim"
-    }
-  },
-  {
-    "sindrets/diffview.nvim",
-    event = "BufRead",
+    requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
   },
   {
     "ghillb/cybu.nvim",
@@ -86,7 +80,7 @@ require('auto-session').setup()
 
 -- # DiffView
 -- # --------
-require("diffview").setup()
+require("diffview").setup({})
 
 -- # Glow
 -- # ----
