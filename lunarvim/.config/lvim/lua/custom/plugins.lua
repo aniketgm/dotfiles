@@ -26,6 +26,7 @@ lvim.plugins = {
   { "ellisonleao/glow.nvim" },
   { "davidgranstrom/nvim-markdown-preview" },
   { "sindrets/diffview.nvim" },
+  { "norcalli/nvim-colorizer.lua" },
   -- { "petertriho/nvim-scrollbar" },
   -- { "folke/zen-mode.nvim" },
 
@@ -88,6 +89,10 @@ require('glow').setup({
   width = 110
 })
 
+-- # Nvim Colorizer
+-- # --------------
+require('colorizer').setup()
+
 -- # Nvim-scrollbar (minimap)
 -- # ------------------------
 -- require("scrollbar").setup()
@@ -99,6 +104,7 @@ require('glow').setup({
 -- # Telescope
 -- # ---------
 -- lvim.builtin.telescope.defaults.winblend = 15 -- don't use, impacts performance
+lvim.builtin.telescope.theme = "ivy"
 lvim.builtin.telescope.pickers.current_buffer_fuzzy_find = { previewer = false }
 lvim.builtin.telescope.pickers.find_files.previewer = nil
 lvim.builtin.telescope.pickers.live_grep = {

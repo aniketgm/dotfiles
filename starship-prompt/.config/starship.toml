@@ -40,3 +40,6 @@ format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
 [nodejs]
 # disabled = true
 format = "[$symbol($version )]($style)"
+
+[aws]
+disabled = true
