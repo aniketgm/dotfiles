@@ -7,6 +7,11 @@
 -- # <Esc> is too far to reach everytime. Use 'ii' to switch to normal mode.
 vim.api.nvim_set_keymap("i", "ii", "<Esc>", { noremap = true })
 
+-- # Non leader insert-mode keymaps
+-- # ------------------------------
+vim.api.nvim_set_keymap("i", "<M-1>", "FloatermNew --wintype=split --position=bottom --height=0.5", { noremap = true })
+
+
 -- # Non leader normal-mode keymaps
 -- # ------------------------------
 lvim.keys.normal_mode["<C-S-Tab>"] = "<Plug>(CybuLastusedPrev)"
@@ -14,6 +19,7 @@ lvim.keys.normal_mode["<C-Tab>"] = "<Plug>(CybuLastusedNext)"
 lvim.keys.normal_mode["<C-m>"] = "<cmd>Telescope resume<cr>"
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<M-1>"] = "<cmd>FloatermNew --wintype=split --position=bottom --height=0.4<cr>"
 lvim.keys.normal_mode["<F2>"] = "<cmd>DiffviewToggleFiles<cr>"
 lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
@@ -72,12 +78,12 @@ lvim.builtin.which_key.mappings["D"] = {
 --   w = { "<cmd>Telescope neorg switch_workspace<cr>", "Switch workspace" },
 --   m = { "<cmd>Neorg inject-metadata<cr>", "Add metadata" },
 -- }
--- lvim.builtin.which_key.mappings["m"] = {
---   name = "+MindNotes",
---   m = { "<cmd>MindOpenMain<cr>", "Open main mind tree" },
---   p = { "<cmd>MindOpenProject<cr>", "Open project mind tree" },
---   c = { "<cmd>MindClose<cr>", "Close mind tree" }
--- }
+lvim.builtin.which_key.mappings["m"] = {
+  name = "+MindNotes",
+  m = { "<cmd>MindOpenMain<cr>", "Open main mind tree" },
+  p = { "<cmd>MindOpenProject<cr>", "Open project mind tree" },
+  c = { "<cmd>MindClose<cr>", "Close mind tree" }
+}
 
 -- # -------------------------------------
 -- # Extending existing which-key bindings
@@ -117,4 +123,9 @@ lvim.builtin.which_key.mappings["wg"] = {
 }
 lvim.builtin.which_key.mappings["wp"] = {
   "<cmd>MarkdownPreview<cr>", "Markdown preview HTML"
+}
+
+-- # Toggle Limelight
+lvim.builtin.which_key.mappings["ut"] = {
+  "<cmd>Limelight!!<cr>", "Toggle Limelight"
 }

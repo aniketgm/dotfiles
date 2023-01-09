@@ -22,22 +22,16 @@ lvim.plugins = {
   { "nvim-telescope/telescope-symbols.nvim" },
   { "vimwiki/vimwiki" },
   { "ElPiloto/telescope-vimwiki.nvim" },
-  { "itchyny/calendar.vim" },
+  -- { "itchyny/calendar.vim" },
   { "ellisonleao/glow.nvim" },
   { "davidgranstrom/nvim-markdown-preview" },
   { "sindrets/diffview.nvim" },
   { "norcalli/nvim-colorizer.lua" },
+  { "voldikss/vim-floaterm" },
+  -- { "stevearc/oil.nvim" },
   -- { "petertriho/nvim-scrollbar" },
   -- { "folke/zen-mode.nvim" },
 
-  -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   run = "cd app && npm install",
-  --   setup = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --   end,
-  --   ft = { "markdown" },
-  -- },
   {
     "rmagatti/session-lens",
     requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
@@ -47,16 +41,24 @@ lvim.plugins = {
     branch = "main",
     requires = { "kyazdani42/nvim-web-devicons", "nvim-lua/plenary.nvim" },
   },
+  {
+    "phaazon/mind.nvim",
+    branch = 'master',
+    requires = { "nvim-lua/plenary.nvim" },
+  },
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   run = "cd app && npm install",
+  --   setup = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --   end,
+  --   ft = { "markdown" },
+  -- },
   -- {
   --   "nvim-neorg/neorg",
   --   run = ":Neorg sync-parsers",
   --   requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
   -- }
-  -- {
-  --   "aniketgm/mind.nvim",
-  --   branch = 'master',
-  --   requires = { "nvim-lua/plenary.nvim" },
-  -- },
 }
 
 -- #-----------------------------
@@ -88,6 +90,10 @@ require("diffview").setup({})
 require('glow').setup({
   width = 110
 })
+
+-- # Oil File Explorer
+-- # -----------------
+-- require("oil").setup()
 
 -- # Nvim Colorizer
 -- # --------------
@@ -147,6 +153,18 @@ vim.cmd([[
   endif
 ]])
 
+-- # Floaterm
+-- # --------
+vim.g.floaterm_keymap_new = '<F8>'
+vim.g.floaterm_keymap_toggle = '<F10>'
+vim.g.floaterm_keymap_prev = '<F9>'
+vim.g.floaterm_keymap_next = '<F11>'
+vim.g.floaterm_height = 0.7
+vim.g.floaterm_width = 0.8
+vim.g.floaterm_autoclose = 1
+vim.g.floaterm_title = '─[-($1/$2)-Terminal-]─'
+vim.g.floaterm_borderchars = '─│─│╭╮╯╰'
+
 -- # Vimwiki
 -- # -------
 vim.g.vimwiki_list = {
@@ -171,7 +189,7 @@ require("luasnip").filetype_extend("vimwiki", { "markdown" })
 -- # ----------------
 vim.g.nvim_markdown_preview_theme = "solarized-dark"
 
--- ## -- ## -- ## -- ## -- Extras -- ## -- ## -- ## --
+-- ## -- ## -- ## -- Extras -- ## -- ## -- ## --
 
 -- # Neorg
 -- # -----
@@ -213,30 +231,30 @@ vim.g.nvim_markdown_preview_theme = "solarized-dark"
 
 -- # Mind: Note taking and workflow
 -- # ------------------------------
--- require("mind").setup {
---   persistence = {
---     state_path = "~/Documents/MindNotes/mind.json",
---     data_dir = "~/Documents/MindNotes"
---   },
---   ui = {
---     width = 30,
---     icon_preset = {
---       { " ", "Project" },
---       { " ", "Idea" },
---       { " ", "Note(s)" },
---       { "陼", "Tasks/Todos" },
---       { " ", "Todo" },
---       { "☰ ", "Doing" },
---       { " ", "Done" },
---       { " ", "Cancelled" },
---       { " ", "GitHub" },
---       { " ", "Monitoring" },
---       { " ", "Internet, Earth, everyone!" },
---       { " ", "On Hold" },
---       { "₹ ", "Finance" },
---     }
---   }
--- }
+require("mind").setup {
+  persistence = {
+    state_path = "~/Documents/MindNotes/mind.json",
+    data_dir = "~/Documents/MindNotes"
+  },
+  ui = {
+    width = 30,
+    icon_preset = {
+      { " ", "Project" },
+      { " ", "Idea" },
+      { " ", "Note(s)" },
+      { "陼", "Tasks/Todos" },
+      -- { " ", "Todo" },
+      -- { "☰ ", "Doing" },
+      -- { " ", "Done" },
+      -- { " ", "Cancelled" },
+      { " ", "GitHub" },
+      { " ", "Monitoring" },
+      { " ", "Internet, Earth, everyone!" },
+      { " ", "On Hold" },
+      { "₹ ", "Finance" },
+    }
+  }
+}
 
 -- # Vim Markdown
 -- # ------------

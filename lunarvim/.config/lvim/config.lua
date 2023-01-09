@@ -21,9 +21,7 @@ either a global executable or a path to an executable
 -- #---------------------------
 lvim.log.level = "warn"
 lvim.format_on_save = true
--- lvim.colorscheme = "onedarker"
 lvim.leader = "space"
--- lvim.use_icons = false
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -32,7 +30,7 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.project.show_hidden = true
-lvim.builtin.terminal.active = true
+lvim.builtin.terminal.active = false
 lvim.builtin.theme.tokyonight.options.style = "moon"
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -66,3 +64,13 @@ vim.opt.fillchars = {
 
 require("custom/plugins")
 require("custom/keymaps")
+
+-- # Autocmds
+-- # --------
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "floaterm",
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+})
