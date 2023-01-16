@@ -1,6 +1,7 @@
 -- #--------------------
 -- # Additional plugins
 -- #--------------------
+
 lvim.plugins = {
   -- {
   --   "folke/trouble.nvim",
@@ -20,6 +21,7 @@ lvim.plugins = {
   { "mbbill/undotree" },
   { "nvim-telescope/telescope-file-browser.nvim" },
   { "nvim-telescope/telescope-symbols.nvim" },
+  { "nvim-telescope/telescope-ui-select.nvim" },
   { "vimwiki/vimwiki" },
   { "ElPiloto/telescope-vimwiki.nvim" },
   -- { "itchyny/calendar.vim" },
@@ -122,6 +124,7 @@ lvim.builtin.telescope.extensions.fzf = true
 require("telescope").load_extension "session-lens"
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "vimwiki"
+require("telescope").load_extension "ui-select"
 
 -- # Cybu [Cycle Buffer]
 -- # -------------------
@@ -159,8 +162,8 @@ vim.g.floaterm_keymap_new = '<F8>'
 vim.g.floaterm_keymap_toggle = '<F10>'
 vim.g.floaterm_keymap_prev = '<F9>'
 vim.g.floaterm_keymap_next = '<F11>'
-vim.g.floaterm_height = 0.7
-vim.g.floaterm_width = 0.8
+vim.g.floaterm_height = 0.8
+vim.g.floaterm_width = 0.9
 vim.g.floaterm_autoclose = 1
 vim.g.floaterm_title = '─[-($1/$2)-Terminal-]─'
 vim.g.floaterm_borderchars = '─│─│╭╮╯╰'
@@ -188,6 +191,7 @@ require("luasnip").filetype_extend("vimwiki", { "markdown" })
 -- # Markdown Preview
 -- # ----------------
 vim.g.nvim_markdown_preview_theme = "solarized-dark"
+-- vim.g.nvim_markdown_preview_theme = "github"
 
 -- ## -- ## -- ## -- Extras -- ## -- ## -- ## --
 
@@ -252,6 +256,11 @@ require("mind").setup {
       { " ", "Internet, Earth, everyone!" },
       { " ", "On Hold" },
       { "₹ ", "Finance" },
+    }
+  },
+  keymaps = {
+    normal = {
+      ["<leader>ms"] = "open_data_index"
     }
   }
 }

@@ -10,7 +10,7 @@
 #  /__            __\  \/  /__                  __\
 #
 
-# Move, Copy, Delete verboses
+# Move, Copy, Delete with verboses
 alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -v'
@@ -33,6 +33,7 @@ alias dk='docker'
 alias dke='docker exec -it'
 alias dki='docker images'
 alias dks='docker ps --format "table {{ .ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dcp='docker-compose'
 
 # Other aliases
 alias b='batcat --style=numbers,changes,header'
@@ -48,6 +49,7 @@ alias md='mkdir -vp'
 alias ns='npm start'
 alias nvc='lvim ~/.config/lvim/config.lua'
 alias o='xdg-open'
+alias pf='pip freeze'
 alias py='python'
 alias q='exit'
 alias rmr='rm -rfv'

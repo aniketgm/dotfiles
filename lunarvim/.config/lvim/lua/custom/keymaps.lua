@@ -9,7 +9,7 @@ vim.api.nvim_set_keymap("i", "ii", "<Esc>", { noremap = true })
 
 -- # Non leader insert-mode keymaps
 -- # ------------------------------
-vim.api.nvim_set_keymap("i", "<M-1>", "FloatermNew --wintype=split --position=bottom --height=0.5", { noremap = true })
+vim.api.nvim_set_keymap("i", "<F12>", "FloatermNew --wintype=split --position=botright --height=0.4", { noremap = true })
 
 
 -- # Non leader normal-mode keymaps
@@ -19,12 +19,21 @@ lvim.keys.normal_mode["<C-Tab>"] = "<Plug>(CybuLastusedNext)"
 lvim.keys.normal_mode["<C-m>"] = "<cmd>Telescope resume<cr>"
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<M-1>"] = "<cmd>FloatermNew --wintype=split --position=bottom --height=0.4<cr>"
+-- lvim.keys.normal_mode["<M-4>"] = "<cmd>ToggleTermToggleAll<cr>"
 lvim.keys.normal_mode["<F2>"] = "<cmd>DiffviewToggleFiles<cr>"
 lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
+lvim.keys.normal_mode["<F12>"] = "<cmd>FloatermNew --wintype=split --position=bottom --height=0.4<cr>"
 lvim.keys.normal_mode["H"] = "<Plug>(CybuPrev)"
 lvim.keys.normal_mode["L"] = "<Plug>(CybuNext)"
+
+-- Lsp Keybinding using Telescope
+lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definitions" }
+lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Telescope lsp_declarations<cr>", "Goto Declarations" }
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Goto References" }
+lvim.lsp.buffer_mappings.normal_mode["gI"] = { "<cmd>Telescope lsp_implementations<cr>", "Goto Implementations" }
+lvim.lsp.buffer_mappings.normal_mode["gs"] = { "<cmd>Telescope lsp_signature_help<cr>", "Signature Help" }
+
 
 -- # Telescope preview window keymaps
 -- # --------------------------------
