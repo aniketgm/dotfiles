@@ -99,16 +99,14 @@ fi
 # Colored GCC warnings and errors
 # Export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Some more ls aliases
-alias ll='ls -alhF --group-directories-first'
-alias la='ls -A --group-directories-first'
-alias l='ls -CF'
-
 # Use exa, modern replacement for ls. [https://github.com/ogham/exa]
 if [ -x /usr/bin/exa ]; then
+    alias l='exa -aF'
+    alias ll='exa -alF --group-directories-first'
+    alias la='exa -aF --group-directories-first'
     alias lse='exa -alF -s extension --group-directories-first'
     alias lss='exa -alF -s size --group-directories-first'
-    alias lsw='exa -aF -s type --group-directories-first'
+    alias lst='exa -aF -s type --group-directories-first'
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -135,6 +133,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Golang exports
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # Set greeting colors / message: using colorscript (DistroTube) OR fortune OR neofetch
 if type colorscript &>/dev/null; then

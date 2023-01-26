@@ -11,6 +11,7 @@ lvim.plugins = {
   -- ## Colorschemes
   -- ## ------------
   { "sainnhe/sonokai" },
+  { "AlexvZyl/nordic.nvim" },
   -- { "NTBBloodbath/doom-one.nvim" },
 
   -- ## Others
@@ -35,6 +36,10 @@ lvim.plugins = {
   -- { "folke/zen-mode.nvim" },
 
   {
+    "rest-nvim/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+  },
+  {
     "rmagatti/session-lens",
     requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
   },
@@ -47,6 +52,10 @@ lvim.plugins = {
     "phaazon/mind.nvim",
     branch = 'master',
     requires = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "folke/trouble.nvim",
+    requires = { "nvim-tree/nvim-web-devicons" },
   },
   -- {
   --   "iamcco/markdown-preview.nvim",
@@ -70,14 +79,16 @@ lvim.plugins = {
 
 -- # Colorscheme config
 -- # ------------------
-vim.g.sonokai_style = 'andromeda'
-vim.g.sonokai_better_performance = 1
-lvim.colorscheme = "sonokai"
+-- vim.g.sonokai_style = 'andromeda'
+-- vim.g.sonokai_better_performance = 1
+-- lvim.colorscheme = "sonokai"
 
 -- require('doom-one').setup({
 --   italic_comments = true,
 --   transparent_background = true
 -- })
+
+lvim.colorscheme = "nordic"
 
 -- # Auto-Session
 -- # ------------
@@ -93,13 +104,21 @@ require('glow').setup({
   width = 110
 })
 
--- # Oil File Explorer
--- # -----------------
--- require("oil").setup()
-
 -- # Nvim Colorizer
 -- # --------------
 require('colorizer').setup()
+
+-- # Rest
+-- # ----
+require('rest-nvim').setup({})
+
+-- # Trouble nvim
+-- # ------------
+require('trouble').setup {}
+
+-- # Oil File Explorer
+-- # -----------------
+-- require("oil").setup()
 
 -- # Nvim-scrollbar (minimap)
 -- # ------------------------

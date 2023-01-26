@@ -27,13 +27,16 @@ alias gps='git push'
 alias gs='git status'
 
 # Docker
+alias dcd='docker-compose down'
+alias dcp='docker-compose'
+alias dcu='docker-compose up'
 alias dk='docker'
 # alias dkwp='docker exec -it zinrelodevapp_web_1 /bin/bash'
 # alias dkwl='docker logs zinrelodevapp_web_1 --follow'
+alias dka='docker ps --format "table {{ .ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" -a'
 alias dke='docker exec -it'
 alias dki='docker images'
 alias dks='docker ps --format "table {{ .ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
-alias dcp='docker-compose'
 
 # Other aliases
 alias b='batcat --style=numbers,changes,header'

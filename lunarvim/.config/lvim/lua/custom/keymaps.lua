@@ -28,12 +28,19 @@ lvim.keys.normal_mode["H"] = "<Plug>(CybuPrev)"
 lvim.keys.normal_mode["L"] = "<Plug>(CybuNext)"
 
 -- Lsp Keybinding using Telescope
-lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definitions" }
-lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Telescope lsp_declarations<cr>", "Goto Declarations" }
-lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Goto References" }
-lvim.lsp.buffer_mappings.normal_mode["gI"] = { "<cmd>Telescope lsp_implementations<cr>", "Goto Implementations" }
-lvim.lsp.buffer_mappings.normal_mode["gs"] = { "<cmd>Telescope lsp_signature_help<cr>", "Signature Help" }
+-- lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definitions" }
+-- lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Telescope lsp_declarations<cr>", "Goto Declarations" }
+-- lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Goto References" }
+-- lvim.lsp.buffer_mappings.normal_mode["gI"] = { "<cmd>Telescope lsp_implementations<cr>", "Goto Implementations" }
+-- lvim.lsp.buffer_mappings.normal_mode["gs"] = { "<cmd>Telescope lsp_signature_help<cr>", "Signature Help" }
 
+lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" }
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Trouble lsp_references<cr>", "References" }
+lvim.lsp.buffer_mappings.normal_mode["gi"] = { "<cmd>Trouble lsp_implementations<cr>", "Implementations" }
+lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" }
+lvim.lsp.buffer_mappings.normal_mode["gq"] = { "<cmd>Trouble quickfix<cr>", "QuickFix" }
+lvim.lsp.buffer_mappings.normal_mode["gl"] = { "<cmd>Trouble loclist<cr>", "LocationList" }
+lvim.lsp.buffer_mappings.normal_mode["gw"] = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" }
 
 -- # Telescope preview window keymaps
 -- # --------------------------------
@@ -93,6 +100,12 @@ lvim.builtin.which_key.mappings["m"] = {
   p = { "<cmd>MindOpenProject<cr>", "Open project mind tree" },
   c = { "<cmd>MindClose<cr>", "Close mind tree" }
 }
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Trouble",
+  c = { "<cmd>TroubleClose<cr>", "Trouble close" },
+  r = { "<cmd>TroubleRefresh<cr>", "Trouble refresh" },
+  t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
+}
 
 -- # -------------------------------------
 -- # Extending existing which-key bindings
@@ -106,7 +119,7 @@ lvim.builtin.which_key.mappings["s/"] = {
   "<cmd>Telescope find_files cwd=/<cr>", "Find files in ROOT"
 }
 lvim.builtin.which_key.mappings["sB"] = {
-  "<cmd>Telescope file_browser depth=2<cr>", "Browse Files"
+  "<cmd>Telescope file_browser depth=2<cr>", "Browse files"
 }
 lvim.builtin.which_key.mappings["sT"] = {
   "<cmd>Telescope live_grep cwd=~<cr>", "Search text in HOME"
@@ -136,5 +149,5 @@ lvim.builtin.which_key.mappings["wp"] = {
 
 -- # Toggle Limelight
 lvim.builtin.which_key.mappings["ut"] = {
-  "<cmd>Limelight!!<cr>", "Toggle Limelight"
+  "<cmd>Limelight!!<cr>", "Toggle limelight"
 }
