@@ -2,6 +2,8 @@
 -- # Custom keymaps
 -- #----------------
 
+local fn = require("custom.funcs")
+
 -- To list all keymaps do: <leader>Lk
 
 -- # <Esc> is too far to reach everytime. Use 'ii' to switch to normal mode.
@@ -14,8 +16,8 @@ vim.api.nvim_set_keymap("i", "<F12>", "FloatermNew --wintype=split --position=bo
 
 -- # Non leader normal-mode keymaps
 -- # ------------------------------
-lvim.keys.normal_mode["<C-S-Tab>"] = "<Plug>(CybuLastusedPrev)"
-lvim.keys.normal_mode["<C-Tab>"] = "<Plug>(CybuLastusedNext)"
+-- lvim.keys.normal_mode["<C-S-Tab>"] = "<Plug>(CybuLastusedPrev)"
+-- lvim.keys.normal_mode["<C-Tab>"] = "<Plug>(CybuLastusedNext)"
 lvim.keys.normal_mode["<C-m>"] = "<cmd>Telescope resume<cr>"
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
@@ -26,6 +28,9 @@ lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
 lvim.keys.normal_mode["<F12>"] = "<cmd>FloatermNew --wintype=split --position=bottom --height=0.4<cr>"
 lvim.keys.normal_mode["H"] = "<Plug>(CybuPrev)"
 lvim.keys.normal_mode["L"] = "<Plug>(CybuNext)"
+lvim.keys.normal_mode["<M-1>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
+lvim.keys.normal_mode["<M-2>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
+lvim.keys.normal_mode["<M-3>"] = "<cmd>lua require('harpoon.ui').nav_file(3)<cr>"
 
 -- Lsp Keybinding using Telescope
 -- lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definitions" }
@@ -41,6 +46,8 @@ lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Trouble document_diagnostic
 lvim.lsp.buffer_mappings.normal_mode["gq"] = { "<cmd>Trouble quickfix<cr>", "QuickFix" }
 lvim.lsp.buffer_mappings.normal_mode["gl"] = { "<cmd>Trouble loclist<cr>", "LocationList" }
 lvim.lsp.buffer_mappings.normal_mode["gw"] = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" }
+
+
 
 -- # Telescope preview window keymaps
 -- # --------------------------------
@@ -59,16 +66,19 @@ lvim.builtin.telescope.defaults.mappings = {
 -- Lunarvim maps '<leader>w' to save buffer.
 -- Removing it for vimwiki, which uses '<leader>ww'
 lvim.builtin.which_key.mappings["w"] = nil
+lvim.builtin.which_key.mappings["h"] = nil
+lvim.builtin.which_key.mappings["T"] = nil
+lvim.builtin.which_key.mappings["H"] = { "<cmd>nohlsearch<cr>", "No highlight" }
 
 -- # ----------------------
 -- # New which-key bindings
 -- # ----------------------
-lvim.builtin.which_key.mappings["P"] = {
+lvim.builtin.which_key.mappings["P"]  = {
   name = "+Project",
   l = { "<cmd>Telescope projects<cr>", "Select a project" },
   s = { "<cmd>Telescope live_grep<cr>", "Search text in current project" },
 }
-lvim.builtin.which_key.mappings["S"] = {
+lvim.builtin.which_key.mappings["S"]  = {
   name = "+Session",
   w = { "<cmd>SaveSession<cr>", "Save current session" },
   r = { "<cmd>RestoreSession<cr>", "Restore last session" },
@@ -80,7 +90,7 @@ lvim.builtin.which_key.mappings["gD"] = {
   o = { "<cmd>DiffviewOpen -uno<cr>", "Open Diffview" },
   c = { "<cmd>DiffviewClose<cr>", "Close Diffview" },
 }
-lvim.builtin.which_key.mappings["D"] = {
+lvim.builtin.which_key.mappings["D"]  = {
   name = "+Dotfiles",
   r = { "<cmd>edit ~/.bashrc<cr>", "Edit bashrc" },
   a = { "<cmd>edit ~/.bash_aliases<cr>", "Edit bash aliases" },
@@ -89,23 +99,44 @@ lvim.builtin.which_key.mappings["D"] = {
   s = { "<cmd>edit ~/.config/starship.toml<cr>", "Edit starship prompt config" },
   -- c = { "<cmd>edit ~/.config/alacritty/alacritty.yml", "Edit alacritty config" },
 }
--- lvim.builtin.which_key.mappings["n"] = {
---   name = "+Neorg Telescope",
---   w = { "<cmd>Telescope neorg switch_workspace<cr>", "Switch workspace" },
---   m = { "<cmd>Neorg inject-metadata<cr>", "Add metadata" },
--- }
-lvim.builtin.which_key.mappings["m"] = {
+lvim.builtin.which_key.mappings["m"]  = {
   name = "+MindNotes",
   m = { "<cmd>MindOpenMain<cr>", "Open main mind tree" },
   p = { "<cmd>MindOpenProject<cr>", "Open project mind tree" },
   c = { "<cmd>MindClose<cr>", "Close mind tree" }
 }
-lvim.builtin.which_key.mappings["t"] = {
+lvim.builtin.which_key.mappings["t"]  = {
   name = "+Trouble",
   c = { "<cmd>TroubleClose<cr>", "Trouble close" },
   r = { "<cmd>TroubleRefresh<cr>", "Trouble refresh" },
   t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
 }
+lvim.builtin.which_key.mappings["h"]  = {
+  name = "+Harpoon",
+  h = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Show harpoon menu" },
+  a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Add to harpoon" },
+  p = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Goto prev file" },
+  n = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Goto next file" },
+}
+
+local mysqldb_dkr = "loginapp-rds-mysqldb-1"
+
+lvim.builtin.which_key.mappings["T"] = {
+  name = "Terminal",
+  l = {
+    "<cmd>FloatermNew --title=─($1/$2)─MySqlDB─Logs─ " .. fn.docker_logs(mysqldb_dkr) .. "<cr>",
+    "MySqlDB logs"
+  },
+  c = {
+    "<cmd>FloatermNew --title=─($1/$2)─MySqlDB─Prompt─ " .. fn.docker_exec(mysqldb_dkr) .. "<cr>",
+    "MySqlDB prompt"
+  },
+}
+-- lvim.builtin.which_key.mappings["n"] = {
+--   name = "+Neorg Telescope",
+--   w = { "<cmd>Telescope neorg switch_workspace<cr>", "Switch workspace" },
+--   m = { "<cmd>Neorg inject-metadata<cr>", "Add metadata" },
+-- }
 
 -- # -------------------------------------
 -- # Extending existing which-key bindings

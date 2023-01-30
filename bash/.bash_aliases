@@ -36,6 +36,7 @@ alias dk='docker'
 alias dka='docker ps --format "table {{ .ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}" -a'
 alias dke='docker exec -it'
 alias dki='docker images'
+alias dkl='docker logs'
 alias dks='docker ps --format "table {{ .ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
 
 # Other aliases

@@ -16,20 +16,22 @@ lvim.plugins = {
 
   -- ## Others
   -- ## ------
+  -- { "itchyny/calendar.vim" },
+  { "ElPiloto/telescope-vimwiki.nvim" },
+  { "anuvyklack/pretty-fold.nvim" },
   { "chrisbra/unicode.vim" },
+  { "davidgranstrom/nvim-markdown-preview" },
+  { "ellisonleao/glow.nvim" },
   { "junegunn/limelight.vim" },
   { "kdheepak/lazygit.nvim" },
   { "mbbill/undotree" },
+  { "norcalli/nvim-colorizer.lua" },
   { "nvim-telescope/telescope-file-browser.nvim" },
   { "nvim-telescope/telescope-symbols.nvim" },
   { "nvim-telescope/telescope-ui-select.nvim" },
-  { "vimwiki/vimwiki" },
-  { "ElPiloto/telescope-vimwiki.nvim" },
-  -- { "itchyny/calendar.vim" },
-  { "ellisonleao/glow.nvim" },
-  { "davidgranstrom/nvim-markdown-preview" },
   { "sindrets/diffview.nvim" },
-  { "norcalli/nvim-colorizer.lua" },
+  { "ThePrimeagen/harpoon" },
+  { "vimwiki/vimwiki" },
   { "voldikss/vim-floaterm" },
   -- { "stevearc/oil.nvim" },
   -- { "petertriho/nvim-scrollbar" },
@@ -89,6 +91,7 @@ lvim.plugins = {
 -- })
 
 lvim.colorscheme = "nordic"
+-- lvim.colorscheme = "tokyonight-moon"
 
 -- # Auto-Session
 -- # ------------
@@ -116,8 +119,13 @@ require('rest-nvim').setup({})
 -- # ------------
 require('trouble').setup {}
 
+-- # Pretty-fold
+-- # -----------
+-- require('pretty-fold').setup()
+
 -- # Oil File Explorer
 -- # -----------------
+-- table.insert(lvim.builtin.telescope.defaults.layout_config, { height = 0.5 })
 -- require("oil").setup()
 
 -- # Nvim-scrollbar (minimap)
@@ -132,6 +140,7 @@ require('trouble').setup {}
 -- # ---------
 -- lvim.builtin.telescope.defaults.winblend = 15 -- don't use, impacts performance
 lvim.builtin.telescope.theme = "ivy"
+lvim.builtin.telescope.defaults.layout_config = { height = 0.6 }
 lvim.builtin.telescope.pickers.current_buffer_fuzzy_find = { previewer = false }
 lvim.builtin.telescope.pickers.find_files.previewer = nil
 lvim.builtin.telescope.pickers.live_grep = {
@@ -184,7 +193,8 @@ vim.g.floaterm_keymap_next = '<F11>'
 vim.g.floaterm_height = 0.8
 vim.g.floaterm_width = 0.9
 vim.g.floaterm_autoclose = 1
-vim.g.floaterm_title = '─[-($1/$2)-Terminal-]─'
+-- vim.g.floaterm_title = '─[-($1/$2)-Terminal-]─'
+vim.g.floaterm_title = '─($1/$2)─Terminal─'
 vim.g.floaterm_borderchars = '─│─│╭╮╯╰'
 
 -- # Vimwiki
@@ -266,10 +276,10 @@ require("mind").setup {
       { " ", "Idea" },
       { " ", "Note(s)" },
       { "陼", "Tasks/Todos" },
-      -- { " ", "Todo" },
-      -- { "☰ ", "Doing" },
-      -- { " ", "Done" },
-      -- { " ", "Cancelled" },
+      { " ", "Todo" },
+      { "☰ ", "Doing" },
+      { " ", "Done" },
+      { " ", "Cancelled" },
       { " ", "GitHub" },
       { " ", "Monitoring" },
       { " ", "Internet, Earth, everyone!" },
