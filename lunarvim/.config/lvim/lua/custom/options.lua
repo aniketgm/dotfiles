@@ -13,6 +13,15 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.leader = "space"
 
+-- # Lvim colorscheme
+-- # ----------------
+-- vim.g.sonokai_style = 'andromeda'
+-- vim.g.sonokai_better_performance = 1
+
+-- lvim.colorscheme = "sonokai"
+lvim.colorscheme = "nordic"
+-- lvim.colorscheme = "tokyonight"
+
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
@@ -22,7 +31,19 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.project.show_hidden = true
 lvim.builtin.terminal.active = false
 lvim.builtin.theme.tokyonight.options.style = "moon"
+
+-- # Telescope extra config options
+lvim.builtin.telescope.theme = "ivy"
+-- lvim.builtin.telescope.defaults.winblend = 15 -- don't use, impacts performance
+lvim.builtin.telescope.defaults.layout_config = { height = 0.6 }
+-- lvim.builtin.telescope.pickers.find_files.previewer = nil
 lvim.builtin.telescope.pickers.buffers.initial_mode = "insert"
+lvim.builtin.telescope.pickers.current_buffer_fuzzy_find = { previewer = false }
+lvim.builtin.telescope.pickers.live_grep = {
+  previewer = false,
+  only_sort_text = true,
+}
+lvim.builtin.telescope.extensions.fzf = true
 
 table.insert(lvim.builtin.breadcrumbs.winbar_filetype_exclude, "floaterm")
 table.insert(lvim.builtin.breadcrumbs.winbar_filetype_exclude, "lazygit")

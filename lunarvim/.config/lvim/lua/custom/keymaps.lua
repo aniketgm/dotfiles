@@ -16,8 +16,8 @@ vim.api.nvim_set_keymap("i", "<F12>", "FloatermNew --wintype=split --position=bo
 
 -- # Non leader normal-mode keymaps
 -- # ------------------------------
--- lvim.keys.normal_mode["<C-S-Tab>"] = "<Plug>(CybuLastusedPrev)"
--- lvim.keys.normal_mode["<C-Tab>"] = "<Plug>(CybuLastusedNext)"
+lvim.keys.normal_mode["<C-S-Tab>"] = "<Plug>(CybuLastusedPrev)"
+lvim.keys.normal_mode["<C-Tab>"] = "<Plug>(CybuLastusedNext)"
 lvim.keys.normal_mode["<C-m>"] = "<cmd>Telescope resume<cr>"
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
@@ -118,20 +118,38 @@ lvim.builtin.which_key.mappings["h"]  = {
   p = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Goto prev file" },
   n = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Goto next file" },
 }
+lvim.builtin.which_key.mappings["z"]  = {
+  name = "+Zetelkasten",
+  n = { "<cmd>Telekasten new_note<cr>", "Add a new note" },
+  f = { "<cmd>Telekasten find_notes<cr>", "Find notes" },
+  s = { "<cmd>Telekasten search_notes<cr>", "Grep notes" },
+  t = { "<cmd>Telekasten show_tags<cr>", "Show tags" },
+  p = { "<cmd>Telekasten panel<cr>", "Show command panel" },
+  d = { "<cmd>Telekasten find_friends<cr>", "Find Friends" },
+  b = { "<cmd>Telekasten show_backlinks<cr>", "Show backlinks" },
+}
+lvim.builtin.which_key.mappings["r"]  = {
+  name = "RestAPI",
+  r = { "<Plug>RestNvim", "Run request" },
+  p = { "<Plug>RestNvimPreview", "Preview using curl request" },
+  l = { "<Plug>RestNvimLast", "Re-run last request" },
+}
 
-local mysqldb_dkr = "loginapp-rds-mysqldb-1"
+
+local dkr_contr_name = "loginapp-rds-mysqldb-1"
 
 lvim.builtin.which_key.mappings["T"] = {
   name = "Terminal",
   l = {
-    "<cmd>FloatermNew --title=─($1/$2)─MySqlDB─Logs─ " .. fn.docker_logs(mysqldb_dkr) .. "<cr>",
+    "<cmd>FloatermNew --title=─($1/$2)─MySqlDB─Logs─ " .. fn.docker_logs(dkr_contr_name) .. "<cr>",
     "MySqlDB logs"
   },
   c = {
-    "<cmd>FloatermNew --title=─($1/$2)─MySqlDB─Prompt─ " .. fn.docker_exec(mysqldb_dkr) .. "<cr>",
+    "<cmd>FloatermNew --title=─($1/$2)─MySqlDB─Prompt─ " .. fn.docker_exec(dkr_contr_name) .. "<cr>",
     "MySqlDB prompt"
   },
 }
+
 -- lvim.builtin.which_key.mappings["n"] = {
 --   name = "+Neorg Telescope",
 --   w = { "<cmd>Telescope neorg switch_workspace<cr>", "Switch workspace" },

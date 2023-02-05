@@ -12,7 +12,7 @@
 
 --]]
 
-require("custom/options")
 require("custom/plugins")
+require("custom/options")
 require("custom/keymaps")
 require("custom/autocmds")
