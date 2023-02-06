@@ -439,9 +439,9 @@ font:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
- program: wsl
- args:
-   - -d Ubuntu-22.04
+  program: wsl
+  args:
+    - -d Ubuntu-22.04
 
 # Startup directory
 #

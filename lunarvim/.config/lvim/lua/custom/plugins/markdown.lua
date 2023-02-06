@@ -27,10 +27,10 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
-      vim.g.mkdp_filetypes = { "markdown" }
+    ft = "markdown",
+    event = "VeryLazy",
+    build = function()
+      vim.fn["mkdp#util#install"]()
     end,
-    ft = { "markdown" },
   },
 }

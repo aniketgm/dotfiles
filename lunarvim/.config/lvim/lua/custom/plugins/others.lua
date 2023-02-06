@@ -1,5 +1,4 @@
 return {
-
   { "junegunn/limelight.vim" },
   { "kdheepak/lazygit.nvim" },
   { "chrisbra/unicode.vim" },

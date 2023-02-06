@@ -1,16 +1,20 @@
--- lvim.plugins = {}
+lvim.plugins = {}
 
-lvim.plugins = {
-  require("custom.plugins.colorschemes"),
-  require("custom.plugins.cybu"),
-  require("custom.plugins.floaterm"),
-  require("custom.plugins.undotree"),
-  require("custom.plugins.noice"),
-  require("custom.plugins.telekasten"),
-  require("custom.plugins.markdown"),
-  -- require("custom.plugins.vimwiki"),
-  require("custom.plugins.others"),
-  require("custom.plugins.telescope"),
-  -- require("custom.plugins.mindnote"),
-  -- require("custom.plugins.neorg"),
-}
+local add_plugins = function(plugin_table)
+  for _, plugin in pairs(plugin_table) do
+    table.insert(lvim.plugins, plugin)
+  end
+end
+
+add_plugins(require("custom.plugins.colorschemes"))
+-- add_plugins(require('custom.plugins.cybu'))
+add_plugins(require("custom.plugins.floaterm"))
+add_plugins(require("custom.plugins.undotree"))
+add_plugins(require("custom.plugins.noice"))
+add_plugins(require("custom.plugins.telekasten"))
+-- add_plugins(require("custom.plugins.vimwiki"))
+add_plugins(require("custom.plugins.markdown"))
+add_plugins(require("custom.plugins.others"))
+add_plugins(require("custom.plugins.telescope"))
+-- add_plugins(require("custom.plugins.mindnote"))
+-- add_plugins(require("custom.plugins.neorg"))

@@ -16,8 +16,6 @@ vim.api.nvim_set_keymap("i", "<F12>", "FloatermNew --wintype=split --position=bo
 
 -- # Non leader normal-mode keymaps
 -- # ------------------------------
-lvim.keys.normal_mode["<C-S-Tab>"] = "<Plug>(CybuLastusedPrev)"
-lvim.keys.normal_mode["<C-Tab>"] = "<Plug>(CybuLastusedNext)"
 lvim.keys.normal_mode["<C-m>"] = "<cmd>Telescope resume<cr>"
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
@@ -25,12 +23,14 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<F2>"] = "<cmd>DiffviewToggleFiles<cr>"
 lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
-lvim.keys.normal_mode["<F12>"] = "<cmd>FloatermNew --wintype=split --position=bottom --height=0.4<cr>"
-lvim.keys.normal_mode["H"] = "<Plug>(CybuPrev)"
-lvim.keys.normal_mode["L"] = "<Plug>(CybuNext)"
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<M-1>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
 lvim.keys.normal_mode["<M-2>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
 lvim.keys.normal_mode["<M-3>"] = "<cmd>lua require('harpoon.ui').nav_file(3)<cr>"
+
+-- # Floaterm
+lvim.keys.normal_mode["<F12>"] = "<cmd>FloatermNew --wintype=split --position=bottom --height=0.4<cr>"
 
 -- Lsp Keybinding using Telescope
 -- lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definitions" }
@@ -168,7 +168,7 @@ lvim.builtin.which_key.mappings["s/"] = {
   "<cmd>Telescope find_files cwd=/<cr>", "Find files in ROOT"
 }
 lvim.builtin.which_key.mappings["sB"] = {
-  "<cmd>Telescope file_browser depth=2<cr>", "Browse files"
+  "<cmd>Telescope file_browser cwd=%:p:h depth=2<cr>", "Browse files"
 }
 lvim.builtin.which_key.mappings["sT"] = {
   "<cmd>Telescope live_grep cwd=~<cr>", "Search text in HOME"
