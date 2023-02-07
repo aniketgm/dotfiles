@@ -4,6 +4,14 @@ return {
   { "chrisbra/unicode.vim" },
   { "ThePrimeagen/harpoon" },
   {
+    "rcarriga/nvim-notify",
+    config = function()
+      require('notify').setup({
+        render = "minimal",
+      })
+    end
+  },
+  {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require('colorizer').setup()

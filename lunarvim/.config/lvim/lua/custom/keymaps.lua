@@ -122,11 +122,14 @@ lvim.builtin.which_key.mappings["z"]  = {
   name = "+Zetelkasten",
   n = { "<cmd>Telekasten new_note<cr>", "Add a new note" },
   f = { "<cmd>Telekasten find_notes<cr>", "Find notes" },
-  s = { "<cmd>Telekasten search_notes<cr>", "Grep notes" },
+  d = { "<cmd>Telekasten find_daily_notes<cr>", "Find daily notes" },
+  w = { "<cmd>Telekasten find_weekly_notes<cr>", "Find weekly notes" },
+  s = { "<cmd>Telekasten search_notes<cr>", "Search/Grep notes" },
+  l = { "<cmd>Telekasten follow_link<cr>", "Follow link" },
   t = { "<cmd>Telekasten show_tags<cr>", "Show tags" },
   p = { "<cmd>Telekasten panel<cr>", "Show command panel" },
-  d = { "<cmd>Telekasten find_friends<cr>", "Find Friends" },
   b = { "<cmd>Telekasten show_backlinks<cr>", "Show backlinks" },
+  v = { "<cmd>Telekasten switch_vault<cr>", "Switch vault" },
 }
 lvim.builtin.which_key.mappings["r"]  = {
   name = "RestAPI",
@@ -137,7 +140,6 @@ lvim.builtin.which_key.mappings["r"]  = {
 
 
 local dkr_contr_name = "loginapp-rds-mysqldb-1"
-
 lvim.builtin.which_key.mappings["T"] = {
   name = "Terminal",
   l = {
