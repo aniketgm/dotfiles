@@ -1,51 +1,88 @@
 return {
-  { "junegunn/limelight.vim" },
-  { "kdheepak/lazygit.nvim" },
-  { "chrisbra/unicode.vim" },
-  { "ThePrimeagen/harpoon" },
+    { "junegunn/limelight.vim" },
+    { "ThePrimeagen/harpoon" },
+    { "kdheepak/lazygit.nvim" },
+    -- { "tools-life/taskwiki" }, -- Needs vim/neovim to be python compiled.
+    -- { "dstein64/vim-startuptime" },
+    {
+        "chrisbra/unicode.vim",
+        lazy = true,
+    },
+    {
+        "preservim/tagbar",
+        config = function()
+          vim.g.tagbar_ctags_bins = '/usr/bin/ctags'
+        end
+    },
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+          require('notify').setup({
+              render = "minimal",
+              top_down = false,
+          })
+        end
+    },
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+          require('colorizer').setup()
+        end
+    },
+    {
+        "sindrets/diffview.nvim",
+        config = function()
+          require("diffview").setup({})
+        end
+    },
+    {
+        "rest-nvim/rest.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+          require('rest-nvim').setup({})
+        end
+    },
+    {
+        "rmagatti/session-lens",
+        dependencies = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+        config = function()
+          require('auto-session').setup()
+        end
+    },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+          require('trouble').setup {}
+        end
+    },
+    --[[
   {
-    "rcarriga/nvim-notify",
+    "lmburns/lf.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "akinsho/toggleterm.nvim" },
     config = function()
-      require('notify').setup({
-        render = "minimal",
-      })
+      require('lf').setup({})
+    end,
+  },
+  {
+    "ja-ford/delaytrain.nvim",
+    config = function()
+      require('delaytrain').setup {
+        delay_ms = 500, -- How long repeated usage of a key should be prevented
+        grace_period = 2, -- How many repeated keypresses are allowed
+        keys = { -- Which keys (in which modes) should be delayed
+          ['nv'] = { 'h', 'j', 'k', 'l' },
+          ['nvi'] = { '<Left>', '<Down>', '<Up>', '<Right>' },
+        },
+        ignore_filetypes = {}, -- Example: set to {"help", "NvimTr*"} to
+        -- disable the plugin for help and NvimTree
+      }
     end
   },
   {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require('colorizer').setup()
-    end
-  },
-  {
-    "sindrets/diffview.nvim",
-    config = function()
-      require("diffview").setup({})
-    end
-  },
-  {
-    "rest-nvim/rest.nvim",
+    "windwp/nvim-spectre",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require('rest-nvim').setup({})
-    end
   },
-  {
-    "rmagatti/session-lens",
-    dependencies = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
-    config = function()
-      require('auto-session').setup()
-    end
-  },
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require('trouble').setup {}
-    end
-  },
-
-  --[[
   {
     "anuvyklack/pretty-fold.nvim",
     config = function ()
@@ -72,5 +109,4 @@ return {
     end,
   },
   --]]
-
 }
