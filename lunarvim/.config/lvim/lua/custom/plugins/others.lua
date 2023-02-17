@@ -56,6 +56,7 @@ return {
           require('trouble').setup {}
         end
     },
+
     --[[
   {
     "lmburns/lf.nvim",

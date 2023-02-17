@@ -24,8 +24,6 @@ vim.opt.fillchars = {
 
 -- # LunarVim specific options
 -- #---------------------------
--- lvim.log.level = "warn"
--- lvim.format_on_save = true
 lvim.log.level = "info"
 lvim.format_on_save = {
     enabled = true,
@@ -46,15 +44,17 @@ lvim.builtin.telescope.theme = "ivy"
 lvim.builtin.telescope.defaults.layout_config = { height = 0.6 }
 lvim.builtin.telescope.defaults.path_display = { shorten = 5 }
 lvim.builtin.telescope.pickers.buffers.initial_mode = "insert"
+lvim.builtin.telescope.pickers.buffers.theme = "dropdown"
+lvim.builtin.telescope.pickers.git_files.theme = "dropdown"
 lvim.builtin.telescope.pickers.current_buffer_fuzzy_find = { previewer = false }
 lvim.builtin.telescope.pickers.live_grep = {
     previewer = false,
     only_sort_text = true,
 }
 lvim.builtin.telescope.extensions.fzf = true
--- lvim.builtin.luasnip.sources.friendly_snippets = true
 
-lvim.builtin.which_key.setup.icons.group = lvim.icons.ui.Plus .. ' '
+-- lvim.builtin.which_key.setup.icons.group = lvim.icons.ui.Plus .. ' '
+lvim.builtin.which_key.setup.icons.group = '+'
 
 table.insert(lvim.builtin.breadcrumbs.winbar_filetype_exclude, "floaterm")
 table.insert(lvim.builtin.breadcrumbs.winbar_filetype_exclude, "lazygit")
@@ -75,6 +75,9 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Friendly snippet - Enable react snippets in javascript file
 require 'luasnip'.filetype_extend("javascript", { "javascriptreact" })
+
+require('custom.plugins.lualine')
+
 -- lvim.builtin.lualine.on_config_done = function()
 --   vim.cmd [[highlight LineNr ctermfg='White' guifg='White']]
 -- end
