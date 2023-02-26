@@ -24,17 +24,17 @@ return {
               width = 110
           })
         end,
-        ft = "markdown",
         lazy = true,
+        ft = "markdown"
     },
     {
         "iamcco/markdown-preview.nvim",
-        ft = "markdown",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         build = function()
           vim.fn["mkdp#util#install"]()
         end,
         lazy = true,
+        ft = "markdown",
     },
     -- { "lvht/tagbar-markdown" },
 }

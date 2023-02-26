@@ -10,20 +10,13 @@
    /              \  \  /  /                    \
   /__            __\  \/  /__                  __\   Github Repo : https://github.com/aniketgm/Dotfiles
 --]]
-
-require("custom/options")
-require("custom/plugins")
-require("custom/keymaps")
-require("custom/autocmds")
+reload("custom/options")
+reload("custom/plugins")
+reload("custom/keymaps")
+reload("custom/autocmds")
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-
--- -- Change theme settings
--- lvim.colorscheme = "lunar"
-
--- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
 -- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
 

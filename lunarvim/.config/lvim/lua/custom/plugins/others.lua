@@ -1,9 +1,15 @@
 return {
     { "junegunn/limelight.vim" },
     { "ThePrimeagen/harpoon" },
-    { "kdheepak/lazygit.nvim" },
+    -- { "kdheepak/lazygit.nvim" },
     -- { "tools-life/taskwiki" }, -- Needs vim/neovim to be python compiled.
     -- { "dstein64/vim-startuptime" },
+    {
+        "smzm/hydrovim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        lazy = true,
+        ft = "python",
+    },
     {
         "chrisbra/unicode.vim",
         lazy = true,
@@ -54,6 +60,12 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
           require('trouble').setup {}
+        end
+    },
+    {
+        "mfussenegger/nvim-dap-python",
+        config = function()
+          require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
         end
     },
 

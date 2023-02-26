@@ -21,6 +21,8 @@ return {
           vim.g.vimwiki_global_ext = 0
           require("luasnip").filetype_extend("vimwiki", { "markdown" })
         end,
+        lazy = true,
+        ft = 'markdown'
     },
     -- # Telescope extension for Vimwiki
     {
@@ -29,5 +31,6 @@ return {
           require("telescope").load_extension "vimwiki"
         end,
         lazy = true,
+        ft = 'vimwiki'
     },
 }

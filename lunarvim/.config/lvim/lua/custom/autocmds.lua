@@ -51,6 +51,12 @@ vim.api.nvim_create_user_command("ToggleNr", function()
   end
 end, {})
 
+vim.api.nvim_create_user_command("NewFile", function()
+  vim.ui.input({ prompt = "New file: " }, function(input)
+    vim.cmd("edit " .. input)
+  end)
+end, {})
+
 -- # Toggle LSP
 -- local diagnostic_active = true
 -- local toggle_diagnostics = function()

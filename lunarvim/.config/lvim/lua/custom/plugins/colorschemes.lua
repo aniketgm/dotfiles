@@ -1,10 +1,10 @@
 return {
-    {
-        "rebelot/kanagawa.nvim",
-        config = function()
-          lvim.colorscheme = "kanagawa"
-        end,
-    },
+    -- {
+    --     "rebelot/kanagawa.nvim",
+    --     config = function()
+    --       lvim.colorscheme = "kanagawa"
+    --     end,
+    -- },
     -- {
     --     'rose-pine/neovim',
     --     name = 'rose-pine',
@@ -13,12 +13,12 @@ return {
     --       lvim.colorscheme = "rose-pine"
     --     end
     -- },
-    -- {
-    --   "AlexvZyl/nordic.nvim",
-    --   config = function()
-    --     lvim.colorscheme = "nordic"
-    --   end,
-    -- },
+    {
+        "AlexvZyl/nordic.nvim",
+        config = function()
+          lvim.colorscheme = "nordic"
+        end,
+    },
     -- {
     --   "sainnhe/sonokai",
     --   config = function()

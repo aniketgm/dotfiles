@@ -23,7 +23,7 @@ lvim.keys.normal_mode["<C-t>"] = "<cmd>FloatermNew --wintype=float --height=0.9 
 lvim.keys.normal_mode["<F2>"] = "<cmd>DiffviewToggleFiles<cr>"
 lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
-lvim.keys.normal_mode["<F8>"] = "<cmd>TagbarToggle<cr>"
+-- lvim.keys.normal_mode["<F8>"] = "<cmd>TagbarToggle<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<M-1>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
@@ -44,8 +44,6 @@ lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Trouble document_diagnostic
 lvim.lsp.buffer_mappings.normal_mode["gq"] = { "<cmd>Trouble quickfix<cr>", "QuickFix" }
 lvim.lsp.buffer_mappings.normal_mode["gl"] = { "<cmd>Trouble loclist<cr>", "LocationList" }
 lvim.lsp.buffer_mappings.normal_mode["gw"] = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" }
-
-
 
 -- # Telescope preview window keymaps
 -- # --------------------------------
@@ -167,15 +165,24 @@ lvim.builtin.which_key.mappings["sB"] = { "<cmd>Telescope file_browser cwd=%:p:h
 lvim.builtin.which_key.mappings["sT"] = { "<cmd>Telescope live_grep cwd=~<cr>", "Search text in HOME" }
 
 -- # Buffer extensions
-lvim.builtin.which_key.mappings["bs"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search text in this buffer" }
-lvim.builtin.which_key.mappings["bS"] = { "<cmd>Telescope live_grep grep_open_files=true<cr>",
-    "Search text in all buffers" }
+lvim.builtin.which_key.mappings["bs"] = {
+    "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+    "Search text in this buffer"
+}
+lvim.builtin.which_key.mappings["bS"] = {
+    "<cmd>Telescope live_grep grep_open_files=true<cr>",
+    "Search text in all buffers"
+}
 
 -- # Vimwiki extensions
-lvim.builtin.which_key.mappings["wf"] = { "<cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>",
-    "Find wiki file" }
-lvim.builtin.which_key.mappings["wS"] = { "<cmd>lua require('telescope').extensions.vimwiki.live_grep()<cr>",
-    "Live grep wiki files" }
+lvim.builtin.which_key.mappings["wf"] = {
+    "<cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>",
+    "Find wiki file"
+}
+lvim.builtin.which_key.mappings["wS"] = {
+    "<cmd>lua require('telescope').extensions.vimwiki.live_grep()<cr>",
+    "Live grep wiki files"
+}
 lvim.builtin.which_key.mappings["wg"] = { "<cmd>Glow<cr>", "Markdown preview" }
 lvim.builtin.which_key.mappings["wp"] = { "<cmd>MarkdownPreview<cr>", "Markdown preview HTML" }
 
@@ -184,7 +191,10 @@ lvim.builtin.which_key.mappings["ut"] = { "<cmd>Limelight!!<cr>", "Toggle limeli
 
 -- # LazyGit
 lvim.builtin.which_key.mappings["g"]["g"] = nil
-lvim.builtin.which_key.mappings["gg"] = { "<cmd>LazyGit<cr>", "LazyGit" }
+lvim.builtin.which_key.mappings["gg"] = {
+    "<cmd>FloatermNew --wintype=float --height=0.95 --width=0.95 lazygit<cr>",
+    "LazyGit"
+}
 
 -- # LspStop
 lvim.builtin.which_key.mappings["lt"] = { "<cmd>LspStop<cr>", "Stop" }
