@@ -13,22 +13,17 @@ vim.api.nvim_set_keymap("i", "ii", "<Esc>", { noremap = true })
 -- # ------------------------------
 -- vim.api.nvim_set_keymap("i", "<F12>", "FloatermNew --wintype=split --position=botright --height=0.4", { noremap = true })
 
-
 -- # Non leader normal-mode keymaps
 -- # ------------------------------
 lvim.keys.normal_mode["<C-m>"] = "<cmd>Telescope resume<cr>"
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-t>"] = "<cmd>FloatermNew --wintype=float --height=0.9 --width=0.8<cr>"
-lvim.keys.normal_mode["<F2>"] = "<cmd>DiffviewToggleFiles<cr>"
 lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
 -- lvim.keys.normal_mode["<F8>"] = "<cmd>TagbarToggle<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<M-1>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
-lvim.keys.normal_mode["<M-2>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
-lvim.keys.normal_mode["<M-3>"] = "<cmd>lua require('harpoon.ui').nav_file(3)<cr>"
 
 -- Lsp Keybinding using Telescope
 -- lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definitions" }
@@ -36,14 +31,16 @@ lvim.keys.normal_mode["<M-3>"] = "<cmd>lua require('harpoon.ui').nav_file(3)<cr>
 -- lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Goto References" }
 -- lvim.lsp.buffer_mappings.normal_mode["gI"] = { "<cmd>Telescope lsp_implementations<cr>", "Goto Implementations" }
 -- lvim.lsp.buffer_mappings.normal_mode["gs"] = { "<cmd>Telescope lsp_signature_help<cr>", "Signature Help" }
-
-lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" }
-lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Trouble lsp_references<cr>", "References" }
-lvim.lsp.buffer_mappings.normal_mode["gi"] = { "<cmd>Trouble lsp_implementations<cr>", "Implementations" }
-lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" }
-lvim.lsp.buffer_mappings.normal_mode["gq"] = { "<cmd>Trouble quickfix<cr>", "QuickFix" }
-lvim.lsp.buffer_mappings.normal_mode["gl"] = { "<cmd>Trouble loclist<cr>", "LocationList" }
-lvim.lsp.buffer_mappings.normal_mode["gw"] = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" }
+local trouble_ok, _ = pcall(require, "trouble")
+if trouble_ok then
+  lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" }
+  lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Trouble lsp_references<cr>", "References" }
+  lvim.lsp.buffer_mappings.normal_mode["gi"] = { "<cmd>Trouble lsp_implementations<cr>", "Implementations" }
+  lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" }
+  lvim.lsp.buffer_mappings.normal_mode["gq"] = { "<cmd>Trouble quickfix<cr>", "QuickFix" }
+  lvim.lsp.buffer_mappings.normal_mode["gl"] = { "<cmd>Trouble loclist<cr>", "LocationList" }
+  lvim.lsp.buffer_mappings.normal_mode["gw"] = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" }
+end
 
 -- # Telescope preview window keymaps
 -- # --------------------------------
@@ -74,13 +71,18 @@ lvim.builtin.which_key.mappings["P"] = {
     l = { "<cmd>Telescope projects<cr>", "Select a project" },
     s = { "<cmd>Telescope live_grep<cr>", "Search text in current project" },
 }
-lvim.builtin.which_key.mappings["S"] = {
-    name = "+Session",
-    w = { "<cmd>SaveSession<cr>", "Save current session" },
-    r = { "<cmd>RestoreSession<cr>", "Restore last session" },
-    s = { "<cmd>SearchSession<cr>", "Show sessions" },
-    k = { "<cmd>DeleteSession<cr>", "Kill/Delete current session" },
-}
+
+local session_ok, _ = pcall(require, "auto-session")
+if session_ok then
+  lvim.builtin.which_key.mappings["S"] = {
+      name = "+Session",
+      w = { "<cmd>SaveSession<cr>", "Save current session" },
+      r = { "<cmd>RestoreSession<cr>", "Restore last session" },
+      s = { "<cmd>SearchSession<cr>", "Show sessions" },
+      k = { "<cmd>DeleteSession<cr>", "Kill/Delete current session" },
+  }
+end
+
 -- lvim.builtin.which_key.mappings["gD"] = {
 --   name = "+Diffview",
 --   o = { "<cmd>DiffviewOpen -uno<cr>", "Open Diffview" },
@@ -95,6 +97,7 @@ lvim.builtin.which_key.mappings["D"] = {
     s = { "<cmd>edit ~/.config/starship.toml<cr>", "Edit starship prompt config" },
     -- c = { "<cmd>edit ~/.config/alacritty/alacritty.yml", "Edit alacritty config" },
 }
+
 lvim.builtin.which_key.mappings["m"] = {
     name = "+MindNotes",
     m = { "<cmd>MindOpenMain<cr>", "Open main mind tree" },
@@ -107,13 +110,21 @@ lvim.builtin.which_key.mappings["t"] = {
     r = { "<cmd>TroubleRefresh<cr>", "Trouble refresh" },
     t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
 }
-lvim.builtin.which_key.mappings["h"] = {
-    name = "+Harpoon",
-    h = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Show harpoon menu" },
-    a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Add to harpoon menu" },
-    p = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Goto prev file" },
-    n = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Goto next file" },
-}
+
+local harpoon_ok, _ = pcall(require, "harpoon.ui")
+if harpoon_ok then
+  lvim.keys.normal_mode["<M-1>"] = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>"
+  lvim.keys.normal_mode["<M-2>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
+  lvim.keys.normal_mode["<M-3>"] = "<cmd>lua require('harpoon.ui').nav_file(3)<cr>"
+  lvim.builtin.which_key.mappings["h"] = {
+      name = "+Harpoon",
+      h = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Show harpoon menu" },
+      a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Add to harpoon menu" },
+      p = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Goto prev file" },
+      n = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Goto next file" },
+  }
+end
+
 -- lvim.builtin.which_key.mappings["z"] = {
 --     name = "+Zetelkasten",
 --     n = { "<cmd>Telekasten new_note<cr>", "Add a new note" },
@@ -127,13 +138,16 @@ lvim.builtin.which_key.mappings["h"] = {
 --     b = { "<cmd>Telekasten show_backlinks<cr>", "Show backlinks" },
 --     v = { "<cmd>Telekasten switch_vault<cr>", "Switch vault" },
 -- }
-lvim.builtin.which_key.mappings["r"] = {
-    name = "RestAPI",
-    r = { "<Plug>RestNvim", "Run request" },
-    p = { "<Plug>RestNvimPreview", "Preview using curl request" },
-    l = { "<Plug>RestNvimLast", "Re-run last request" },
-}
 
+local restapi_ok, _ = pcall(require, "rest-nvim")
+if restapi_ok then
+  lvim.builtin.which_key.mappings["r"] = {
+      name = "RestAPI",
+      r = { "<Plug>RestNvim", "Run request" },
+      p = { "<Plug>RestNvimPreview", "Preview using curl request" },
+      l = { "<Plug>RestNvimLast", "Re-run last request" },
+  }
+end
 
 local dkr_contr_name = "postgres_db"
 lvim.builtin.which_key.mappings["T"] = {
@@ -187,7 +201,10 @@ lvim.builtin.which_key.mappings["wg"] = { "<cmd>Glow<cr>", "Markdown preview" }
 lvim.builtin.which_key.mappings["wp"] = { "<cmd>MarkdownPreview<cr>", "Markdown preview HTML" }
 
 -- # Toggle Limelight
+-- local limelight_ok, _ = pcall(require, "limelight")
+-- if limelight_ok then
 lvim.builtin.which_key.mappings["ut"] = { "<cmd>Limelight!!<cr>", "Toggle limelight" }
+-- end
 
 -- # LazyGit
 lvim.builtin.which_key.mappings["g"]["g"] = nil
@@ -200,4 +217,8 @@ lvim.builtin.which_key.mappings["gg"] = {
 lvim.builtin.which_key.mappings["lt"] = { "<cmd>LspStop<cr>", "Stop" }
 
 -- # DiffviewToggle
-lvim.builtin.which_key.mappings["gD"] = { "<cmd>DiffviewToggle<cr>", "Toggle Diffview" }
+local diffview_ok, _ = pcall(require, "diffview")
+if diffview_ok then
+  lvim.keys.normal_mode["<F2>"] = "<cmd>DiffviewToggleFiles<cr>"
+  lvim.builtin.which_key.mappings["gD"] = { "<cmd>DiffviewToggle<cr>", "Toggle Diffview" }
+end
