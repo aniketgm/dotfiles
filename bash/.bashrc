@@ -101,13 +101,15 @@ fi
 
 # Use exa, modern replacement for ls. [https://github.com/ogham/exa]
 if [ -x /usr/bin/exa ]; then
-    alias l='exa -aF'
-    alias ll='exa -alF --group-directories-first'
-    alias la='exa -aF --group-directories-first'
-    alias lse='exa -alF -s extension --group-directories-first'
-    alias lss='exa -alF -s size --group-directories-first'
-    alias lst='exa -aF -s type --group-directories-first'
-    alias lsm='exa -alF -s modified --group-directories-first'
+    alias l='exa -F --icons'
+    alias ll='exa -alF --group-directories-first --icons'
+    alias la='exa -aF --group-directories-first --icons'
+    alias lse='exa -alF -s extension --group-directories-first --icons'
+    alias lss='exa -alF -s size --group-directories-first --icons'
+    alias lst='exa -aF -s type --group-directories-first --icons'
+    alias lsm='exa -alF -s modified --group-directories-first --icons'
+    alias ltr='exa -alF --tree --level=1 --group-directories-first --icons'
+    alias ltr2='exa -alF --tree --level=2 --group-directories-first --icons'
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:

@@ -21,7 +21,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-t>"] = "<cmd>FloatermNew --wintype=float --height=0.9 --width=0.8<cr>"
 lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
--- lvim.keys.normal_mode["<F8>"] = "<cmd>TagbarToggle<cr>"
+lvim.keys.normal_mode["<F8>"] = "<cmd>TagbarToggle<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 

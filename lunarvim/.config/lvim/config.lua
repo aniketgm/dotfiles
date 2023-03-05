@@ -15,12 +15,10 @@ reload("custom/plugins")
 reload("custom/keymaps")
 reload("custom/autocmds")
 
--- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 
 -- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
 
--- --- disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = false
 
 -- ---configure a server manually. IMPORTANT: Requires `:LvimCacheReset` to take effect
@@ -63,20 +61,3 @@ reload("custom/autocmds")
 --     args = { "--severity", "warning" },
 --   },
 -- }
-
--- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
-
--- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })

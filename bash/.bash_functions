@@ -10,18 +10,36 @@
 #  /__            __\  \/  /__                  __\
 #
 
-# Fuzzy file finder customized to open with neovim.
-ff() {
-    FZF_OUTPUT=$(rg --files --hidden | \
-                 fzf --preview="batcat --color=always --style=numbers {}" \
-                     --bind shift-up:preview-page-up,shift-down:preview-page-down \
-                     --height=20 --reverse)
-    [[ ! -z $FZF_OUTPUT ]] && lvim $FZF_OUTPUT
+# Fuzzy file finder customized to open with lunarvim.
+ffe() {
+    if ! command -v rg &>/dev/null; then
+        echo "rg is not installed"
+    else
+        FZF_OUTPUT=$(rg --files --hidden --ignore-case | \
+                     fzf --preview="batcat --color=always --style=numbers {}" \
+                         --bind shift-up:preview-page-up,shift-down:preview-page-down \
+                         --height=20 --reverse)
+        [[ ! -z $FZF_OUTPUT ]] && lvim $FZF_OUTPUT
+    fi
+}
+
+ffo() {
+    if ! command -v xdg-open &>/dev/null; then
+        echo "xdg-open is not installed"
+    else
+        $FZF_OUTPUT = (rg --files --ignore-case --no-messages | fzf --height=20 --reverse)
+        [[ ! z $FZF_OUTPUT ]] && xdg-open $FZF_OUTPUT
+    fi
 }
 
 # Fuzzy folder switcher
 fdd() {
-    FZF_OUTPUT=$(find . -type d | \
+    if ! command -v fdfind &>/dev/null; then
+        FIND_CMD="fdfind . -t d"
+    else
+        FIND_CMD="find . -type d"
+    fi
+    FZF_OUTPUT=$($FIND_CMD | \
                  fzf --preview="ls -l --color=always --group-directories-first {}" \
                      --bind shift-up:preview-up,shift-down:preview-down \
                      --height=20 --reverse)
@@ -42,6 +60,29 @@ twb() {
     fi
 }
 
+sv() {
+    case "$1" in
+        l)
+            sudo service --status-all
+            # sudo systemctl
+            ;;
+        u)
+            sudo service $i2 start
+            # sudo systemctl start $1
+            ;;
+        d)
+            sudo service $2 stop
+            # sudo systemctl stop $1
+            ;;
+        s)
+            sudo service $2 status
+            # sudo systemctl status $1
+            ;;
+        *)
+            echo "Usage: sv option <service>. Options: s (status) OR u (start) OR d (stop) OR l (list)"
+            ;;
+    esac
+}
 # Go into the directory specified by $1 and run the command specified by $2
 # run_cmd() {
 #     if [ ! -z "$1" ] && [ ! -z "$2" ]; then

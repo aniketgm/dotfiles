@@ -4,12 +4,12 @@ return {
     -- { "kdheepak/lazygit.nvim" },
     -- { "tools-life/taskwiki" }, -- Needs vim/neovim to be python compiled.
     -- { "dstein64/vim-startuptime" },
-    {
-        "smzm/hydrovim",
-        dependencies = { "MunifTanjim/nui.nvim" },
-        lazy = true,
-        ft = "python",
-    },
+    -- {
+    --     "smzm/hydrovim",
+    --     dependencies = { "MunifTanjim/nui.nvim" },
+    --     lazy = true,
+    --     ft = "python",
+    -- },
     {
         "chrisbra/unicode.vim",
         lazy = true,
