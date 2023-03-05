@@ -27,8 +27,8 @@ ffo() {
     if ! command -v xdg-open &>/dev/null; then
         echo "xdg-open is not installed"
     else
-        $FZF_OUTPUT = (rg --files --ignore-case --no-messages | fzf --height=20 --reverse)
-        [[ ! z $FZF_OUTPUT ]] && xdg-open $FZF_OUTPUT
+        FZF_OUTPUT=$(rg --files --ignore-case --no-messages | fzf --height=20 --reverse)
+        [[ ! -z $FZF_OUTPUT ]] && xdg-open $FZF_OUTPUT
     fi
 }
 
