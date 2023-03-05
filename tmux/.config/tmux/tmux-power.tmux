@@ -21,8 +21,8 @@ tmux_set() {
 }
 
 # Options
-# right_arrow_icon=$(tmux_get '@right_arrow_icon' '')
-# left_arrow_icon=$(tmux_get '@left_arrow_icon' '')
+right_arrow_icon=$(tmux_get '@right_arrow_icon' '')
+left_arrow_icon=$(tmux_get '@left_arrow_icon' '')
 left_arrow_line_icon=$(tmux_get '@left_arrow_line_icon' '')
 up_arrow_icon=$(tmux_get '@up_arrow_icon' '▲')
 down_arrow_icon=$(tmux_get '@down_arrow_icon' '▼')
@@ -107,7 +107,7 @@ tmux_set @prefix_highlight_output_prefix "#[fg=$TC]#[bg=$BG]$left_arrow_icon#[bg
 tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$BG]$right_arrow_icon"
 
 # Icons used in this config and some more (To use it to your liking/interest)
-#         ▲ ▼       ⚡  ▎❐ 🔍
+#         ▲ ▼       ⚡  ▎❐ 🔍  
 
 # Left side of status bar
 tmux_set status-left-bg "$G04"
@@ -132,7 +132,7 @@ tmux_set status-right-length 150
 RS="\
 #[fg=$G06]$left_arrow_icon\
 #[fg=$TC,bg=$G06] $battery_icon#(~/bin/battstat.sh) \
-#[fg=$TC,bg=$G06]|\
+#[fg=$TC,bg=$G06]$left_arrow_line_icon\
 #[fg=$TC,bg=$G06] $time_icon $time_format \
 #[fg=$TC,bg=$G06]$left_arrow_icon\
 #[fg=$G04,bg=$TC] $date_icon $date_format "
