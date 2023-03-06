@@ -22,8 +22,8 @@ lvim.keys.normal_mode["<C-t>"] = "<cmd>FloatermNew --wintype=float --height=0.9 
 lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
 lvim.keys.normal_mode["<F8>"] = "<cmd>TagbarToggle<cr>"
-lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
+lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 
 -- Lsp Keybinding using Telescope
 -- lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definitions" }
@@ -40,6 +40,12 @@ if trouble_ok then
   lvim.lsp.buffer_mappings.normal_mode["gq"] = { "<cmd>Trouble quickfix<cr>", "QuickFix" }
   lvim.lsp.buffer_mappings.normal_mode["gl"] = { "<cmd>Trouble loclist<cr>", "LocationList" }
   lvim.lsp.buffer_mappings.normal_mode["gw"] = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" }
+  lvim.builtin.which_key.mappings["t"] = {
+      name = "+Trouble",
+      c = { "<cmd>TroubleClose<cr>", "Trouble close" },
+      r = { "<cmd>TroubleRefresh<cr>", "Trouble refresh" },
+      t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
+  }
 end
 
 -- # Telescope preview window keymaps
@@ -103,12 +109,6 @@ lvim.builtin.which_key.mappings["m"] = {
     m = { "<cmd>MindOpenMain<cr>", "Open main mind tree" },
     p = { "<cmd>MindOpenProject<cr>", "Open project mind tree" },
     c = { "<cmd>MindClose<cr>", "Close mind tree" }
-}
-lvim.builtin.which_key.mappings["t"] = {
-    name = "+Trouble",
-    c = { "<cmd>TroubleClose<cr>", "Trouble close" },
-    r = { "<cmd>TroubleRefresh<cr>", "Trouble refresh" },
-    t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
 }
 
 local harpoon_ok, _ = pcall(require, "harpoon.ui")
