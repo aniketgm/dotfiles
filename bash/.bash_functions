@@ -67,7 +67,7 @@ sv() {
             # sudo systemctl
             ;;
         u)
-            sudo service $i2 start
+            sudo service $2 start
             # sudo systemctl start $1
             ;;
         d)

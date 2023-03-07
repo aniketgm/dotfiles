@@ -57,6 +57,37 @@ vim.api.nvim_create_user_command("NewFile", function()
   end)
 end, {})
 
+-- Param relative boolean #Whether relativenumber should be set
+-- local function set_relativenumber(relative)
+--   local in_insert_mode = vim.api.nvim_get_mode().mode == "i"
+
+--   if vim.o.number then
+--     vim.opt.relativenumber = relative and not in_insert_mode
+--   end
+-- end
+
+-- lvim.autocommands = {
+--     {
+--         { "BufEnter", "FocusGained", "InsertLeave", "WinEnter", "CmdLineLeave" },
+--         {
+--             desc = "Set relative number when not in insert mode",
+--             callback = function()
+--               set_relativenumber(true)
+--             end,
+--         },
+--     },
+--     {
+--         { "BufLeave", "FocusLost", "InsertEnter", "WinLeave", "CmdLineEnter" },
+--         {
+--             desc = "Turn off relative number when in insert mode",
+--             callback = function()
+--               set_relativenumber(false)
+--             end,
+--         },
+--     },
+-- }
+
+
 -- # Toggle LSP
 -- local diagnostic_active = true
 -- local toggle_diagnostics = function()
