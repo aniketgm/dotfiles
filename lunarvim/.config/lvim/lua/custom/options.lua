@@ -8,7 +8,7 @@
 --]]
 -- # Vim specific options
 -- #----------------------
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 vim.opt.colorcolumn = '80'
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
