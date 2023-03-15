@@ -18,19 +18,13 @@ vim.api.nvim_set_keymap("i", "ii", "<Esc>", { noremap = true })
 lvim.keys.normal_mode["<C-m>"] = "<cmd>Telescope resume<cr>"
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-t>"] = "<cmd>FloatermNew --wintype=float --height=0.9 --width=0.8<cr>"
+lvim.keys.normal_mode["<C-t>"] = "<cmd>FloatermNew --wintype=float --height=0.9 --width=0.9<cr>"
 lvim.keys.normal_mode["<F3>"] = "<cmd>NvimTreeFindFileToggle<cr>"
 lvim.keys.normal_mode["<F4>"] = "<cmd>UndotreeToggle<cr>"
 lvim.keys.normal_mode["<F8>"] = "<cmd>TagbarToggle<cr>"
 lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 
--- Lsp Keybinding using Telescope
--- lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definitions" }
--- lvim.lsp.buffer_mappings.normal_mode["gD"] = { "<cmd>Telescope lsp_declarations<cr>", "Goto Declarations" }
--- lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Goto References" }
--- lvim.lsp.buffer_mappings.normal_mode["gI"] = { "<cmd>Telescope lsp_implementations<cr>", "Goto Implementations" }
--- lvim.lsp.buffer_mappings.normal_mode["gs"] = { "<cmd>Telescope lsp_signature_help<cr>", "Signature Help" }
 local trouble_ok, _ = pcall(require, "trouble")
 if trouble_ok then
   lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" }
@@ -89,11 +83,6 @@ if session_ok then
   }
 end
 
--- lvim.builtin.which_key.mappings["gD"] = {
---   name = "+Diffview",
---   o = { "<cmd>DiffviewOpen -uno<cr>", "Open Diffview" },
---   c = { "<cmd>DiffviewClose<cr>", "Close Diffview" },
--- }
 lvim.builtin.which_key.mappings["D"] = {
     name = "+Dotfiles",
     r = { "<cmd>edit ~/.bashrc<cr>", "Edit bashrc" },
