@@ -1,72 +1,72 @@
 return {
-    { "junegunn/limelight.vim" },
-    { "ThePrimeagen/harpoon" },
-    -- { "dstein64/vim-startuptime" },
-    -- {
-    --     "smzm/hydrovim",
-    --     dependencies = { "MunifTanjim/nui.nvim" },
-    --     lazy = true,
-    --     ft = "python",
-    -- },
-    {
-        "chrisbra/unicode.vim",
-        lazy = true,
-    },
-    {
-        "preservim/tagbar",
-        config = function()
-          vim.g.tagbar_ctags_bins = '/usr/bin/ctags'
-        end
-    },
-    {
-        "rcarriga/nvim-notify",
-        config = function()
-          require('notify').setup({
-              render = "minimal",
-              top_down = false,
-          })
-        end
-    },
-    {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-          require('colorizer').setup()
-        end
-    },
-    {
-        "sindrets/diffview.nvim",
-        config = function()
-          require("diffview").setup({})
-        end
-    },
-    {
-        "rest-nvim/rest.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-          require('rest-nvim').setup({})
-        end
-    },
-    {
-        "rmagatti/session-lens",
-        dependencies = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
-        config = function()
-          require('auto-session').setup()
-        end
-    },
-    {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-          require('trouble').setup {}
-        end
-    },
-    {
-        "mfussenegger/nvim-dap-python",
-        config = function()
-          require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-        end
-    },
-    --[[
+  { "junegunn/limelight.vim" },
+  { "ThePrimeagen/harpoon" },
+  -- { "dstein64/vim-startuptime" },
+  -- {
+  --     "smzm/hydrovim",
+  --     dependencies = { "MunifTanjim/nui.nvim" },
+  --     lazy = true,
+  --     ft = "python",
+  -- },
+  {
+    "chrisbra/unicode.vim",
+    lazy = true,
+  },
+  {
+    "preservim/tagbar",
+    config = function()
+      vim.g.tagbar_ctags_bins = '/usr/bin/ctags'
+    end
+  },
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require('notify').setup({
+        render = "minimal",
+        top_down = false,
+      })
+    end
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require('colorizer').setup()
+    end
+  },
+  {
+    "sindrets/diffview.nvim",
+    config = function()
+      require("diffview").setup({})
+    end
+  },
+  {
+    "rest-nvim/rest.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require('rest-nvim').setup({})
+    end
+  },
+  {
+    "rmagatti/session-lens",
+    dependencies = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+    config = function()
+      require('auto-session').setup()
+    end
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require('trouble').setup {}
+    end
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    config = function()
+      require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+    end
+  },
+  --[[
   {
       "ja-ford/delaytrain.nvim",
       config = function()
