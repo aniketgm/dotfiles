@@ -10,26 +10,36 @@
 #  /__            __\  \/  /__                  __\
 #
 
+# Fuzzy search aliases
+fa() {
+    alias | fzf --height=20 --reverse
+}
+
+# Fuzzy search command history
+fh() {
+    history | fzf --height=20 --reverse
+}
+
 # Fuzzy file finder customized to open with lunarvim.
 ffe() {
     if ! command -v rg &>/dev/null; then
         echo "rg is not installed"
-    else
-        FZF_OUTPUT=$(rg --files --hidden --ignore-case | \
-                     fzf --preview="batcat --color=always --style=numbers {}" \
-                         --bind shift-up:preview-page-up,shift-down:preview-page-down \
-                         --height=20 --reverse)
-        [[ ! -z $FZF_OUTPUT ]] && lvim $FZF_OUTPUT
+        return 0
     fi
+    [[ ! -z "$1" ]] && ARG1=$1 || ARG1=.
+    FZF_OUTPUT=$(rg --files --hidden --ignore-case $ARG1 | \
+                 fzf --preview="batcat --color=always --style=numbers {}" \
+                     --height=20 --reverse)
+    [[ ! -z $FZF_OUTPUT ]] && lvim $FZF_OUTPUT
 }
 
 ffo() {
     if ! command -v xdg-open &>/dev/null; then
         echo "xdg-open is not installed"
-    else
-        FZF_OUTPUT=$(rg --files --ignore-case --no-messages | fzf --height=20 --reverse)
-        [[ ! -z $FZF_OUTPUT ]] && xdg-open $FZF_OUTPUT
+        return 0
     fi
+    FZF_OUTPUT=$(rg --files --ignore-case --no-messages | fzf --height=20 --reverse)
+    [[ ! -z $FZF_OUTPUT ]] && xdg-open $FZF_OUTPUT
 }
 
 # Fuzzy folder switcher
@@ -41,9 +51,28 @@ fdd() {
     fi
     FZF_OUTPUT=$($FIND_CMD | \
                  fzf --preview="ls -l --color=always --group-directories-first {}" \
-                     --bind shift-up:preview-up,shift-down:preview-down \
                      --height=20 --reverse)
     [[ ! -z $FZF_OUTPUT ]] && cd $FZF_OUTPUT
+}
+
+# Git status of current branch with FZF
+fgs() {
+    git status --porcelain | \
+    fzf --header="Git status" \
+        --preview="git diff {2} | delta -s --width=$(tput cols)" \
+        --reverse --preview-window down:70%
+}
+
+# Git commits of current branch with FZF
+fgc() {
+    if ! command -v git &>/dev/null; then
+        echo "git is not installed"
+        return 0
+    fi
+    git log --pretty=format:"%h %ar %s" | \
+    fzf --header="Diffs of commits" \
+        --preview "git show {1} | delta -s --width=$(tput cols)" \
+        --reverse --preview-window down:70%
 }
 
 # Taskwarrior daily burndown chart on loop

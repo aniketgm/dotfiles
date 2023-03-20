@@ -14,8 +14,8 @@ vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.fillchars = {
-    diff = '⣿', -- Show the specified symbol for Diff
-    vert = '¦' -- Show the specified symbol for vertical split
+  diff = '⣿', -- Show the specified symbol for Diff
+  vert = '¦'   -- Show the specified symbol for vertical split
 }
 -- vim.opt.listchars = {
 --   space = '·', -- Show space with the symbol set
@@ -26,9 +26,9 @@ vim.opt.fillchars = {
 -- #---------------------------
 lvim.log.level = "info"
 lvim.format_on_save = {
-    enabled = true,
-    pattern = "*.lua,*.js,*.jsx",
-    timeout = 1000,
+  enabled = true,
+  pattern = "*.lua,*.js,*.jsx",
+  timeout = 1000,
 }
 lvim.leader = "space"
 
@@ -48,8 +48,8 @@ lvim.builtin.telescope.pickers.buffers.theme = "dropdown"
 lvim.builtin.telescope.pickers.git_files.theme = "dropdown"
 lvim.builtin.telescope.pickers.current_buffer_fuzzy_find = { previewer = false }
 lvim.builtin.telescope.pickers.live_grep = {
-    previewer = false,
-    only_sort_text = true,
+  previewer = false,
+  only_sort_text = true,
 }
 lvim.builtin.telescope.extensions.fzf = true
 

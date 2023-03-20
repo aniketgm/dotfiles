@@ -1,5 +1,5 @@
 return {
-    --[[
+  --[[
   {
     "davidgranstrom/nvim-markdown-preview",
     config = function()
@@ -17,24 +17,24 @@ return {
     end
   },
   --]]
-    {
-        "ellisonleao/glow.nvim",
-        config = function()
-          require('glow').setup({
-              width = 110
-          })
-        end,
-        lazy = true,
-        ft = "markdown"
-    },
-    {
-        "iamcco/markdown-preview.nvim",
-        -- event = "VeryLazy",
-        build = function()
-          vim.fn["mkdp#util#install"]()
-        end,
-        lazy = true,
-        ft = "markdown",
-    },
-    -- { "lvht/tagbar-markdown" },
+  {
+    "ellisonleao/glow.nvim",
+    config = function()
+      require('glow').setup({
+        width = 110
+      })
+    end,
+    lazy = true,
+    ft = "markdown"
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    -- event = "VeryLazy",
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    lazy = true,
+    ft = "markdown",
+  },
+  -- { "lvht/tagbar-markdown" },
 }

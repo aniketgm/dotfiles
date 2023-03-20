@@ -35,10 +35,10 @@ if trouble_ok then
   lvim.lsp.buffer_mappings.normal_mode["gl"] = { "<cmd>Trouble loclist<cr>", "LocationList" }
   lvim.lsp.buffer_mappings.normal_mode["gw"] = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" }
   lvim.builtin.which_key.mappings["t"] = {
-      name = "+Trouble",
-      c = { "<cmd>TroubleClose<cr>", "Trouble close" },
-      r = { "<cmd>TroubleRefresh<cr>", "Trouble refresh" },
-      t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
+    name = "+Trouble",
+    c = { "<cmd>TroubleClose<cr>", "Trouble close" },
+    r = { "<cmd>TroubleRefresh<cr>", "Trouble refresh" },
+    t = { "<cmd>TroubleToggle<cr>", "Trouble toggle" },
   }
 end
 
@@ -46,14 +46,14 @@ end
 -- # --------------------------------
 local _, actions = pcall(require, "telescope.actions")
 lvim.builtin.telescope.defaults.mappings = {
-    i = {
-        ["<C-PageUp>"] = actions.preview_scrolling_up,
-        ["<C-PageDown>"] = actions.preview_scrolling_down,
-    },
-    n = {
-        ["<C-PageUp>"] = actions.preview_scrolling_up,
-        ["<C-PageDown>"] = actions.preview_scrolling_down,
-    },
+  i = {
+    ["<C-PageUp>"] = actions.preview_scrolling_up,
+    ["<C-PageDown>"] = actions.preview_scrolling_down,
+  },
+  n = {
+    ["<C-PageUp>"] = actions.preview_scrolling_up,
+    ["<C-PageDown>"] = actions.preview_scrolling_down,
+  },
 }
 
 -- Lunarvim maps '<leader>w' to save buffer.
@@ -67,37 +67,37 @@ lvim.builtin.which_key.mappings["H"] = { "<cmd>nohlsearch<cr>", "No highlight" }
 -- # New which-key bindings
 -- # ----------------------
 lvim.builtin.which_key.mappings["P"] = {
-    name = "+Project",
-    l = { "<cmd>Telescope projects<cr>", "Select a project" },
-    s = { "<cmd>Telescope live_grep<cr>", "Search text in current project" },
+  name = "+Project",
+  l = { "<cmd>Telescope projects<cr>", "Select a project" },
+  s = { "<cmd>Telescope live_grep<cr>", "Search text in current project" },
 }
 
 local session_ok, _ = pcall(require, "auto-session")
 if session_ok then
   lvim.builtin.which_key.mappings["S"] = {
-      name = "+Session",
-      w = { "<cmd>SaveSession<cr>", "Save current session" },
-      r = { "<cmd>RestoreSession<cr>", "Restore last session" },
-      s = { "<cmd>SearchSession<cr>", "Show sessions" },
-      k = { "<cmd>DeleteSession<cr>", "Kill/Delete current session" },
+    name = "+Session",
+    w = { "<cmd>SaveSession<cr>", "Save current session" },
+    r = { "<cmd>RestoreSession<cr>", "Restore last session" },
+    s = { "<cmd>SearchSession<cr>", "Show sessions" },
+    k = { "<cmd>DeleteSession<cr>", "Kill/Delete current session" },
   }
 end
 
 lvim.builtin.which_key.mappings["D"] = {
-    name = "+Dotfiles",
-    r = { "<cmd>edit ~/.bashrc<cr>", "Edit bashrc" },
-    a = { "<cmd>edit ~/.bash_aliases<cr>", "Edit bash aliases" },
-    f = { "<cmd>edit ~/.bash_functions<cr>", "Edit bash functions" },
-    t = { "<cmd>edit ~/.tmux.conf<cr>", "Edit tmux config" },
-    s = { "<cmd>edit ~/.config/starship.toml<cr>", "Edit starship prompt config" },
-    -- c = { "<cmd>edit ~/.config/alacritty/alacritty.yml", "Edit alacritty config" },
+  name = "+Dotfiles",
+  r = { "<cmd>edit ~/.bashrc<cr>", "Edit bashrc" },
+  a = { "<cmd>edit ~/.bash_aliases<cr>", "Edit bash aliases" },
+  f = { "<cmd>edit ~/.bash_functions<cr>", "Edit bash functions" },
+  t = { "<cmd>edit ~/.tmux.conf<cr>", "Edit tmux config" },
+  s = { "<cmd>edit ~/.config/starship.toml<cr>", "Edit starship prompt config" },
+  -- c = { "<cmd>edit ~/.config/alacritty/alacritty.yml", "Edit alacritty config" },
 }
 
 lvim.builtin.which_key.mappings["m"] = {
-    name = "+MindNotes",
-    m = { "<cmd>MindOpenMain<cr>", "Open main mind tree" },
-    p = { "<cmd>MindOpenProject<cr>", "Open project mind tree" },
-    c = { "<cmd>MindClose<cr>", "Close mind tree" }
+  name = "+MindNotes",
+  m = { "<cmd>MindOpenMain<cr>", "Open main mind tree" },
+  p = { "<cmd>MindOpenProject<cr>", "Open project mind tree" },
+  c = { "<cmd>MindClose<cr>", "Close mind tree" }
 }
 
 local harpoon_ok, _ = pcall(require, "harpoon.ui")
@@ -106,11 +106,11 @@ if harpoon_ok then
   lvim.keys.normal_mode["<M-2>"] = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>"
   lvim.keys.normal_mode["<M-3>"] = "<cmd>lua require('harpoon.ui').nav_file(3)<cr>"
   lvim.builtin.which_key.mappings["h"] = {
-      name = "+Harpoon",
-      h = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Show harpoon menu" },
-      a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Add to harpoon menu" },
-      p = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Goto prev file" },
-      n = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Goto next file" },
+    name = "+Harpoon",
+    h = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Show harpoon menu" },
+    a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Add to harpoon menu" },
+    p = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Goto prev file" },
+    n = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Goto next file" },
   }
 end
 
@@ -131,24 +131,24 @@ end
 local restapi_ok, _ = pcall(require, "rest-nvim")
 if restapi_ok then
   lvim.builtin.which_key.mappings["r"] = {
-      name = "RestAPI",
-      r = { "<Plug>RestNvim", "Run request" },
-      p = { "<Plug>RestNvimPreview", "Preview using curl request" },
-      l = { "<Plug>RestNvimLast", "Re-run last request" },
+    name = "RestAPI",
+    r = { "<Plug>RestNvim", "Run request" },
+    p = { "<Plug>RestNvimPreview", "Preview using curl request" },
+    l = { "<Plug>RestNvimLast", "Re-run last request" },
   }
 end
 
 local dkr_contr_name = "postgres_db"
 lvim.builtin.which_key.mappings["T"] = {
-    name = "Terminal",
-    l = {
-        "<cmd>FloatermNew --title=─($1/$2)─DB─Logs─ " .. fn.docker_logs(dkr_contr_name) .. "<cr>",
-        "MySqlDB logs"
-    },
-    c = {
-        "<cmd>FloatermNew --title=─($1/$2)─DB─Prompt─ " .. fn.docker_exec(dkr_contr_name) .. "<cr>",
-        "MySqlDB prompt"
-    },
+  name = "Terminal",
+  l = {
+    "<cmd>FloatermNew --title=─($1/$2)─DB─Logs─ " .. fn.docker_logs(dkr_contr_name) .. "<cr>",
+    "MySqlDB logs"
+  },
+  c = {
+    "<cmd>FloatermNew --title=─($1/$2)─DB─Prompt─ " .. fn.docker_exec(dkr_contr_name) .. "<cr>",
+    "MySqlDB prompt"
+  },
 }
 
 -- lvim.builtin.which_key.mappings["n"] = {
@@ -169,22 +169,22 @@ lvim.builtin.which_key.mappings["sT"] = { "<cmd>Telescope live_grep cwd=~<cr>", 
 
 -- # Buffer extensions
 lvim.builtin.which_key.mappings["bs"] = {
-    "<cmd>Telescope current_buffer_fuzzy_find<cr>",
-    "Search text in this buffer"
+  "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+  "Search text in this buffer"
 }
 lvim.builtin.which_key.mappings["bS"] = {
-    "<cmd>Telescope live_grep grep_open_files=true<cr>",
-    "Search text in all buffers"
+  "<cmd>Telescope live_grep grep_open_files=true<cr>",
+  "Search text in all buffers"
 }
 
 -- # Vimwiki extensions
 lvim.builtin.which_key.mappings["wf"] = {
-    "<cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>",
-    "Find wiki file"
+  "<cmd>lua require('telescope').extensions.vimwiki.vimwiki()<cr>",
+  "Find wiki file"
 }
 lvim.builtin.which_key.mappings["wS"] = {
-    "<cmd>lua require('telescope').extensions.vimwiki.live_grep()<cr>",
-    "Live grep wiki files"
+  "<cmd>lua require('telescope').extensions.vimwiki.live_grep()<cr>",
+  "Live grep wiki files"
 }
 lvim.builtin.which_key.mappings["wg"] = { "<cmd>Glow<cr>", "Markdown preview" }
 lvim.builtin.which_key.mappings["wp"] = { "<cmd>MarkdownPreview<cr>", "Markdown preview HTML" }
@@ -198,8 +198,8 @@ lvim.builtin.which_key.mappings["ut"] = { "<cmd>Limelight!!<cr>", "Toggle limeli
 -- # LazyGit
 lvim.builtin.which_key.mappings["g"]["g"] = nil
 lvim.builtin.which_key.mappings["gg"] = {
-    "<cmd>FloatermNew --wintype=float --height=0.95 --width=0.95 lazygit<cr>",
-    "LazyGit"
+  "<cmd>FloatermNew --wintype=float --height=0.95 --width=0.95 lazygit<cr>",
+  "LazyGit"
 }
 
 -- # LspStop

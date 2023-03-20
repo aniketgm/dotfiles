@@ -100,13 +100,6 @@ return {
     end
   },
   {
-    "stevearc/oil.nvim",
-    config = function ()
-      table.insert(lvim.builtin.telescope.defaults.layout_config, { height = 0.5 })
-      require("oil").setup()
-    end
-  },
-  {
     "petertriho/nvim-scrollbar",
     config = function()
       require("scrollbar").setup()

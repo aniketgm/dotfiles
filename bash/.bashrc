@@ -78,15 +78,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -110,6 +101,17 @@ if [ -x /usr/bin/exa ]; then
     alias lsm='exa -alF -s modified --group-directories-first --icons'
     alias ltr='exa -alF --tree --level=1 --group-directories-first --icons'
     alias ltr2='exa -alF --tree --level=2 --group-directories-first --icons'
+fi
+
+# Set fzf default options for preview
+[ -x /usr/bin/fzf ] &&
+    export FZF_DEFAULT_OPTS="--bind shift-up:preview-half-page-up,shift-down:preview-half-page-down"
+
+# Set batcat default options for preview
+if [ -x /usr/bin/batcat ]; then
+    export BAT_THEME="Monokai Extended Bright"
+    export BAT_STYLE="numbers,changes,header"
+    export BAT_PAGER="less -RF"
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:

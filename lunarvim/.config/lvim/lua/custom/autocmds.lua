@@ -7,19 +7,19 @@
 -- # Autocmds
 -- # --------
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "floaterm",
-    callback = function()
-      vim.opt.number = false
-      vim.opt.relativenumber = false
-    end,
+  pattern = "floaterm",
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "go",
-    callback = function()
-      vim.opt.tabstop = 4
-      vim.opt.shiftwidth = 4
-    end,
+  pattern = "go",
+  callback = function()
+    vim.opt.tabstop = 4
+    vim.opt.shiftwidth = 4
+  end,
 })
 
 -- # Custom Commands
