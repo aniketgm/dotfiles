@@ -61,6 +61,10 @@ return {
     end
   },
   {
+    "sudormrfbin/cheatsheet.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
+  },
+  {
     "mfussenegger/nvim-dap-python",
     config = function()
       require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')

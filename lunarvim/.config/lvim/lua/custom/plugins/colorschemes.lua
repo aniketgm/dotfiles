@@ -30,7 +30,7 @@ return {
   -- {
   --   "EdenEast/nightfox.nvim",
   --   config = function()
-  --     lvim.colorscheme = "nordic"
+  --     lvim.colorscheme = "duskfox"
   --   end,
   -- }
 }

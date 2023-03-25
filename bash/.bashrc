@@ -105,7 +105,7 @@ fi
 
 # Set fzf default options for preview
 [ -x /usr/bin/fzf ] &&
-    export FZF_DEFAULT_OPTS="--bind shift-up:preview-half-page-up,shift-down:preview-half-page-down"
+    export FZF_DEFAULT_OPTS="--bind shift-up:preview-half-page-up,shift-down:preview-half-page-down --history=$HOME/.fzf_history"
 
 # Set batcat default options for preview
 if [ -x /usr/bin/batcat ]; then

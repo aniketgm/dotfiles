@@ -15,7 +15,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.fillchars = {
   diff = '⣿', -- Show the specified symbol for Diff
-  vert = '¦'   -- Show the specified symbol for vertical split
+  vert = '¦' -- Show the specified symbol for vertical split
 }
 -- vim.opt.listchars = {
 --   space = '·', -- Show space with the symbol set
@@ -72,6 +72,9 @@ lvim.builtin.treesitter.auto_install = true
 -- }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+-- virtual text
+lvim.lsp.diagnostics.virtual_text = false
 
 -- Friendly snippet - Enable react snippets in javascript file
 require 'luasnip'.filetype_extend("javascript", { "javascriptreact" })

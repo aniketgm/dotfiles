@@ -58,7 +58,7 @@ fdd() {
 # Git status of current branch with FZF
 fgs() {
     git status --porcelain | \
-    fzf --header="Git status" \
+    fzf --header="Status with diffs" \
         --preview="git diff {2} | delta -s --width=$(tput cols)" \
         --reverse --preview-window down:70%
 }
@@ -70,9 +70,13 @@ fgc() {
         return 0
     fi
     git log --pretty=format:"%h %ar %s" | \
-    fzf --header="Diffs of commits" \
+    fzf --header="Commits with diffs" \
         --preview "git show {1} | delta -s --width=$(tput cols)" \
         --reverse --preview-window down:70%
+}
+
+mcd() {
+    [[ ! -z "$1" ]] && mkdir -pv $1 && cd $1
 }
 
 # Taskwarrior daily burndown chart on loop
