@@ -13,10 +13,20 @@ return {
   --       lvim.colorscheme = "rose-pine"
   --     end
   -- },
+  -- {
+  --   "AlexvZyl/nordic.nvim",
+  --   config = function()
+  --     lvim.colorscheme = "nordic"
+  --   end,
+  -- },
   {
-    "AlexvZyl/nordic.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     config = function()
-      lvim.colorscheme = "nordic"
+      -- require("catppuccin").setup({
+      --   flavour = "macchiato"
+      -- })
+      lvim.colorscheme = "catppuccin-macchiato"
     end,
   },
   -- {
