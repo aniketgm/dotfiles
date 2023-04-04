@@ -1,6 +1,7 @@
 return {
   { "junegunn/limelight.vim" },
   { "ThePrimeagen/harpoon" },
+  { "Bekaboo/deadcolumn.nvim" },
   -- { "dstein64/vim-startuptime" },
   -- {
   --     "smzm/hydrovim",

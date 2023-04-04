@@ -70,7 +70,7 @@ fgc() {
         return 0
     fi
     git log --pretty=format:"%h %ar %s" | \
-    fzf --header="Commits with diffs" \
+    fzf --header="Branch commits with diffs" \
         --preview "git show {1} | delta -s --width=$(tput cols)" \
         --reverse --preview-window down:70%
 }
