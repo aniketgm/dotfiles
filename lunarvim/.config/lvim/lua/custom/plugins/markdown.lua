@@ -7,6 +7,7 @@ return {
       vim.g.nvim_markdown_preview_theme = "github"
     end
   },
+  --]]
   {
     "preservim/vim-markdown",
     dependencies = { "godlygeek/tabular" },
@@ -16,7 +17,17 @@ return {
       vim.g.vim_markdown_conceal = 0
     end
   },
-  --]]
+  {
+    "epwalsh/obsidian.nvim",
+    config = function()
+      require("obsidian").setup({
+        dir = "/mnt/c/Users/Aniket/Documents/ObsidianNotes",
+        completion = {
+          nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+        }
+      })
+    end
+  },
   {
     "ellisonleao/glow.nvim",
     config = function()
