@@ -8,9 +8,9 @@ return {
           signature = { enabled = false },
           hover = { enabled = false },
         },
-        -- messages = {
-        --     enabled = false
-        -- },
+        messages = {
+          enabled = false
+        },
         views = {
           cmdline_popup = {
             position = {
