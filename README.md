@@ -75,6 +75,7 @@ I work on Windows and Linux (mostly Ubuntu), so I have created two script files,
       - WSL Or Msys2 (my recommend is Msys2, due to less hasle)
     - For Msys2, install it from [official](https://www.msys2.org) site and then `pacman -Syu task`
     - For WSL, again install from [official](https://learn.microsoft.com/en-us/windows/wsl/install) site, with latest Ubuntu, and then `sudo apt install taskwarrior`
+----
 
 - For Linux new system setup (assuming Ubuntu)
 

@@ -1,9 +1,13 @@
 windows:
   dotfiles: ~/.dotfiles
-  link_type: 'Symbolic'
+  link_type: 'symbolic'
   shell_command: powershell -noprofile -nologo -c {{ quote "" cmd }}
+  variables:
+    nf_latest_ver: v3.3.0
 
 linux:
   dotfiles: ~/.dotfiles
-  link_type: 'Hard'
+  link_type: 'hard'
   shell_command: bash -c {{ quote "" cmd }}
+  variables:
+    nf_latest_ver: v3.3.0
