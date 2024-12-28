@@ -29,6 +29,9 @@ main() {
     {
       echo >&2 "Rotz not found. Installing.."
       curl -fsSL volllly.github.io/rotz/install.sh | sh
+      export ROTZ_INSTALL="~/.rotz"
+      export PATH="$ROTZ_INSTALL/bin:$PATH"
+      source ~/.bashrc
     }
 
   # Start setup
