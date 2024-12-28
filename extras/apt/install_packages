@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 function get_deb_file() {
   curl -s $1 | grep 'browser_download_url' | grep '.deb' | grep 'amd64' | cut -d '"' -f 4 | wget -i -
@@ -96,7 +96,4 @@ rm -f *.tar.gz
 rm -f *.deb
 rm -rf fzf/
 rm -f yt-dlp_linux
-
-# Reboot
-echo "Reboot? (y/n) ?" && read ans && [[ "$ans" == "y" ]] && /sbin/reboot
 
