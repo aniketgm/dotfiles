@@ -1,5 +1,5 @@
 windows:
-  installs: scoop install {{ name }}
+  installs: scoop install lazygit
 
 linux:
-  installs: apt install {{ name }}
+  installs: apt install lazygit
