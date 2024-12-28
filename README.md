@@ -77,11 +77,12 @@ cd ~/.dotfiles    # Assuming you cloned the dotfiles in the $HOME directory
 ```sh
 # Install Git required for rotz
 sudo apt install git
+sudo apt install unzip
 
 # Install rotz
 curl -fsSL volllly.github.io/rotz/install.sh | sh
-echo "export ROTZ_INSTALL=~/.rotz" >> ~/.bashrc
-echo "export PATH=$ROTZ_INSTALL:$PATH" >> ~/.bashrc
+echo 'export ROTZ_INSTALL="/home/$USER/.rotz"' >> ~/.bashrc
+echo 'export PATH="$ROTZ_INSTALL/bin:$PATH"' >> ~/.bashrc
 
 # Source bashrc to enable rotz
 source ~/.bashrc

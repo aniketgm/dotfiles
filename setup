@@ -2,6 +2,8 @@
 
 # USER_NAME=$USER
 # su $USER_NAME -c 'main'
+export ROTZ_INSTALL="/home/ameshram/.rotz"
+export PATH="$ROTZ_INSTALL/bin:$PATH"
 
 rotz install essentials/git
 rotz install essentials/lazygit
