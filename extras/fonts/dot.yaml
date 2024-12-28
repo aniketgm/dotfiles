@@ -8,16 +8,16 @@ linux:
   installs:
     cmd: |
       mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
-      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/CascadiaCode.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/CascadiaCode.zip
       unzip CascadiaCode.zip && rm CascadiaCode.zip
-      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/CascadiaMono.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/CascadiaMono.zip
       unzip CascadiaMono.zip && rm CascadiaMono.zip
-      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/FantasqueSansMono.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FantasqueSansMono.zip
       unzip FantasqueSansMono.zip && rm FantasqueSansMono.zip
-      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/FiraCode.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraCode.zip
       unzip FiraCode.zip && rm FiraCode.zip
-      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/FiraMono.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraMono.zip
       unzip FiraMono.zip && rm FiraMono.zip
-      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/JetBrainsMono.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
       unzip JetBrainsMono.zip && rm JetBrainsMono.zip
       fc-cache -fv
