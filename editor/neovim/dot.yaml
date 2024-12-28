@@ -2,4 +2,4 @@ windows:
   installs: scoop install neovim
 
 linux:
-  installs: sudo apt install neovim
+  installs: sudo apt install neovim -y

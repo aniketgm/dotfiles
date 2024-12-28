@@ -23,7 +23,7 @@ curl -s "https://api.github.com/repos/jgraph/drawio-desktop/releases/latest" | g
 
 # fzf -- awesome fuzzy finder
 git clone --depth 1 https://github.com/junegunn/fzf.git fzf
-chmod +x fzf/install && ./fzf/install
+chmod +x fzf/install && dos2unix ./fzf/install && ./fzf/install
 
 # difftastic -- better diff
 DIFFT_VERSION=$(curl -sL "https://api.github.com/repos/Wilfred/difftastic/releases/latest" | awk -F\" '/"tag_name":/{print $(NF-1)}')

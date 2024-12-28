@@ -78,6 +78,7 @@ cd ~/.dotfiles    # Assuming you cloned the dotfiles in the $HOME directory
 # Install Git required for rotz
 sudo apt install git
 sudo apt install unzip
+sudo apt install dos2unix
 
 # Install rotz
 curl -fsSL volllly.github.io/rotz/install.sh | sh
