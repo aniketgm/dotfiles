@@ -1,5 +1,5 @@
 windows:
-  installs: scoop install lazygit
+  installs: scoop install neovim
 
 linux:
-  installs: apt install lazygit
+  installs: sudo apt install neovim
