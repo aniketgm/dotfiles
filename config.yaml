@@ -1,9 +1,9 @@
 windows:
-  dotfiles: .dotfiles
+  dotfiles: $Env:USERPROFILE\.dotfiles
   link_type: 'Symbolic'
   shell_command: powershell -noprofile -nologo -c {{ quote "" cmd }}
 
 linux:
-  dotfiles: .dotfiles
+  dotfiles: /home/$USER/.dotfiles
   link_type: 'Hard'
   shell_command: bash -c {{ quote "" cmd }}
