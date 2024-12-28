@@ -1,0 +1,24 @@
+{
+  "workspaces": {
+    "Tool-Sidekick": {
+      "workdir": "C:\\Apache24\\htdocs\\awx_job_launcher",
+      "tabs": ["Program","Logs"]
+    },
+    "Automation-ResourceMgmt": {
+      "workdir": "C:\\Users\\ameshram\\WorkRepos\\resource-management",
+      "tabs": ["Launcher","Disk","Cpu-Mem"]
+    },
+    "Automation-Patching": {
+      "workdir": "C:\\Users\\ameshram\\WorkRepos\\automation-patching",
+      "tabs": ["Patch-Comm","RFC-Creation"]
+    },
+    "Tool-GSDAudit": {
+      "workdir": "C:\\Apache24\\htdocs\\service_desk_quality_audit",
+      "tabs": ["Program","Logs"]
+    },
+    "Automation-CVBackup": {
+      "workdir": "C:\\Users\\ameshram\\WorkRepos\\full-stack-server-build\\ensono_fssb_backup_cmvlt",
+      "tabs": ["Playbook"]
+    }
+  }
+}

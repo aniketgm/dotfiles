@@ -1,0 +1,6 @@
+windows:
+  installs:
+    cmd: winget install --id Microsoft.WindowsTerminal --exact --source winget
+    depends:
+    - vcredist
+    - pwsh

@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+MACH_OSTYPE=$(cat /etc/*-release | grep "^ID=" | cut -d'=' -f2)
+
+__install() {
+  PACKAGE=$1
+  if [[ "$MACH_OSTYPE" == "ubuntu" ]]; then
+    sudo apt install $PACKAGE
+  elif [[ "$MACH_OSTYPE" == "arch" ]]; then
+    sudo pacman -S $PACKAGE
+  elif [[ "$MACH_OSTYPE" == "fedora" ]]; then
+    sudo yum install $PACKAGE
+  fi
+}
+
+main() {
+  # wherever you are first CD into home
+  cd ~
+
+  # Install Git first if not already
+  command -v git >/dev/null 2>&1 ||
+    {
+      echo >&2 "Git not found. Installing.."
+      __install git
+    }
+
+  # Install Rotz if not already
+  command -v rotz >/dev/null 2>&1 ||
+    {
+      echo >&2 "Rotz not found. Installing.."
+      curl -fsSL volllly.github.io/rotz/install.sh | sh
+    }
+
+  # Start setup
+  rotz clone https://gitlab.com/aniketgm/dotfiles.git
+  cd .dotfiles/
+  rotz install essentials/git
+  rotz install essentials/lazygit
+  rotz install essentials/bash
+  rotz install editor/*
+  rotz install extras/fonts
+  rotz install extras/apt
+
+  # Now link everything
+  rotz link essentials/git
+  rotz link essentials/lazygit
+  rotz link essentials/bash
+  rotz link editor/*
+  rotz link extras/starship
+}
+
+export -f main
+USER_NAME=$USER
+su $USER_NAME -c 'main'

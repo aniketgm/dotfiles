@@ -1,0 +1,5 @@
+windows:
+  installs: scoop install {{ name }}
+
+linux:
+  installs: sudo apt install {{ name }}

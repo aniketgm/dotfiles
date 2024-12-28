@@ -1,0 +1,14 @@
+windows:
+  installs:
+    cmd: |
+      $Pack1 = @(
+        '7zip', 'aria2', 'carnac', 'cht', 'clangd', 'ctags',
+        'delta', 'difftastic', 'dos2unix', 'draw-io', 'dust',
+        'eza', 'fd', 'ffmpeg', 'fzf', 'gcc', 'gopass', 'gpg', 'graphviz', 'grep',
+        'innounp', 'less', 'make', 'miktex', 'mpv', 'neofetch', 'neovim', 'nodejs',
+        'onefetch', 'putty', 'sharex', 'speedtest-cli', 'zoxide'
+      )
+      $Pack2 = @('btop', 'bat', 'jq', 'pandoc', 'ripgrep')
+      $Pack1 + $Pack2 | ForEach-Object { scoop install $_ }
+    depends:
+    - buckets

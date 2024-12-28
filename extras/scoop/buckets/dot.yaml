@@ -1,0 +1,6 @@
+windows:
+  installs: |
+    scoop update
+    scoop bucket add extras
+    scoop bucket add nerd-fonts
+    scoop update

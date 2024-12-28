@@ -1,0 +1,42 @@
+# Remove the blank line between shell prompts
+add_newline = false
+
+[directory]
+truncation_length = 2
+# truncation_symbol = "../"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+# success_symbol = "[➜](bold green)"
+# error_symbol = "[➜](bold red)"
+# success_symbol = "[➤](bold green)"
+# error_symbol = "[➤](red)"
+
+[hostname]
+disabled = false
+ssh_only = false
+format = "[Ψ](blue) "
+
+[git_branch]
+style = "#c0c672"
+
+[git_status]
+style = "#f26942"
+
+[python]
+disabled = false
+format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+# Place the prompt end charater on same line as prompt text
+[line_break]
+disabled = true
+
+[aws]
+disabled = true
+
+[package]
+disabled = true

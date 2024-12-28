@@ -1,0 +1,6 @@
+linux:
+  installs:
+    cmd: |
+      cd ~/.dotfiles/extras/apt/
+      chmod +x install_packages
+      ./install_packages

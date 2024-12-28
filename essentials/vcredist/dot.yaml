@@ -1,0 +1,4 @@
+windows:
+  installs: |
+    winget install --id Microsoft.VCRedist.2015+.x64 --exact --source winget
+    winget install --id Microsoft.VCRedist.2015+.x86 --exact --source winget

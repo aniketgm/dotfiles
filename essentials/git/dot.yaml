@@ -1,0 +1,7 @@
+windows:
+  links:
+    gitconfig_win: ~/.gitconfig
+
+linux:
+  links:
+    gitconfig_lnx: ~/.gitconfig

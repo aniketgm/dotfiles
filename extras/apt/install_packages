@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+function get_deb_file() {
+  curl -s $1 | grep 'browser_download_url' | grep '.deb' | grep 'amd64' | cut -d '"' -f 4 | wget -i -
+}
+
+# Create necessary folders
+mkdir -p ~/Downloads/RotzInstallFiles
+mkdir -p ~/bin
+mkdir -p ~/.local/bin
+mkdir -p ~/.config
+sudo mkdir -p /etc/apt/keyrings
+
+# First update and upgrade the system
+sudo apt update && sudo apt upgrade
+
+# Other installations
+# -------------------
+cd ~/Downloads/RotzInstallFiles
+
+# delta -- better git cli experience
+curl -s "https://api.github.com/repos/jgraph/drawio-desktop/releases/latest" | grep 'browser_download_url' | grep 'amd64\.deb' | grep -v 'musl' | cut -d '"' -f 4 | wget -i -
+
+# fzf -- awesome fuzzy finder
+git clone --depth 1 https://github.com/junegunn/fzf.git fzf
+chmod +x fzf/install && ./fzf/install
+
+# difftastic -- better diff
+DIFFT_VERSION=$(curl -sL "https://api.github.com/repos/Wilfred/difftastic/releases/latest" | awk -F\" '/"tag_name":/{print $(NF-1)}')
+curl -OL https://github.com/Wilfred/difftastic/releases/download/${DIFFT_VERSION}/difft-x86_64-unknown-linux-gnu.tar.gz
+sudo tar -xzvf difft-x86_64-unknown-linux-gnu.tar.gz /usr/local/bin/
+
+# draw.io -- Design and Visualize with diagrams
+get_deb_file "https://api.github.com/repos/jgraph/drawio-desktop/releases/latest"
+
+# dust -- du with a term graphics
+get_deb_file "https://api.github.com/repos/bootandy/dust/releases/latest"
+
+# eza
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+
+# fastfetch -- fetch system info in fancy way as fast as possible
+get_deb_file "https://api.github.com/repos/fastfetch-cli/fastfetch/releases/latest"
+
+# gopass -- Password Mngr
+curl https://packages.gopass.pw/repos/gopass/gopass-archive-keyring.gpg | sudo tee /usr/share/keyrings/gopass-archive-keyring.gpg >/dev/null
+cat << EOF | sudo tee /etc/apt/sources.list.d/gopass.sources
+Types: deb
+URIs: https://packages.gopass.pw/repos/gopass
+Suites: stable
+Architectures: all amd64 arm64 armhf
+Components: main
+Signed-By: /usr/share/keyrings/gopass-archive-keyring.gpg
+EOF
+
+# pandoc -- convert docs to whatever format you want: docx, pdf, pptx, etc.
+get_deb_file "https://api.github.com/repos/jgm/pandoc/releases/latest"
+
+# yt-dlp -- cli audio/video downloader
+curl -sL "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest" | grep 'browser_download_url' | grep 'yt-dlp_linux"$' | cut -d '"' -f 4 | wget -i -
+mv ./yt-dlp_linux ~/.local/bin/
+
+# Again update the system
+sudo apt update
+
+# Packages that can be installed using apt, rest package specific are below that.
+PACKAGES=(
+  # Essentials
+  "build-essential" "clangd" "ctags" "curl" "gpg"
+
+  # Others
+  "bat" "btop" "eza" "fd" "ffmpeg" "imagemagick" "jq" "gopass" "gopass-archive-keyring"
+  "nodejs" "npm" "ripgrep"
+
+  # deb files
+  "git-delta_${DELTA_VERSION}_amd64.deb"
+  "drawio-amd64-*.deb"
+  "du-dust_*.deb"
+  "fastfetch-linux-amd64.deb"
+  "pandoc-*.deb"
+)
+
+# Silently install above packages
+for $PCKG in "${PACKAGES[@]}"
+do
+  sudo apt install $PCKG -y
+done
+
+# zoxide -- smarter cd, inspired by z and autojump
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
+# Clean up
+rm -f *.tar.gz
+rm -f *.deb
+rm -rf fzf/
+rm -f yt-dlp_linux
+
+# Reboot
+echo "Reboot? (y/n) ?" && read ans && [[ "$ans" == "y" ]] && /sbin/reboot
+

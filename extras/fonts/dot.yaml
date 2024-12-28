@@ -1,0 +1,23 @@
+windows:
+  installs:
+    cmd: |
+      $FontNames = @('cascadia-code', 'cascadia-mono', 'caskaydia-cove', 'fantasque-sans-mono', 'fira-code', 'jetbrains-mono')
+      $FontNames | ForEach-Object { & ([scriptblock]::Create((iwr 'https://to.loredo.me/Install-NerdFont.ps1'))) -Confirm:$False -Name $_ }
+
+linux:
+  installs:
+    cmd: |
+      mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/CascadiaCode.zip
+      unzip CascadiaCode.zip && rm CascadiaCode.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/CascadiaMono.zip
+      unzip CascadiaMono.zip && rm CascadiaMono.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/FantasqueSansMono.zip
+      unzip FantasqueSansMono.zip && rm FantasqueSansMono.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/FiraCode.zip
+      unzip FiraCode.zip && rm FiraCode.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/FiraMono.zip
+      unzip FiraMono.zip && rm FiraMono.zip
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nf_latest_ver }}/JetBrainsMono.zip
+      unzip JetBrainsMono.zip && rm JetBrainsMono.zip
+      fc-cache -fv

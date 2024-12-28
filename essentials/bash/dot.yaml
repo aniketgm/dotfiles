@@ -1,0 +1,5 @@
+linux:
+  links:
+    bashrc: ~/.bashrc
+    bash_aliases: ~/.bash_aliases
+    bash_functions: ~/.bash_functions

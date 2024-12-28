@@ -1,0 +1,11 @@
+windows:
+  installs:
+    cmd: |
+      $Pack1 = @('7zip.7zip', 'sharkdp.bat', 'aristocratos.btop4win', 'LLVM.clangd', 'UniversalCtags.Ctags', 'dandavison.delta')
+      $Pack2 = @('Wilfred.difftastic', 'waterlan.dos2unix', 'JGraph.Draw', 'bootandy.dust', 'eza-community.eza', 'sharkdp.fd')
+      $Pack3 = @('Gyan.FFmpeg', 'junegunn.fzf', 'TaKO8Ki.gobang', 'gopass.gopass', 'GnuPG.GnuPG', 'Graphviz.Graphviz', 'GnuWin32.Grep')
+      $Pack4 = @('ImageMagick.ImageMagick', 'JurgenRathlev.innounp', 'jqlang.jq', 'jftuga.less', 'GnuWin32.Make', 'Fastfetch-cli.Fastfetch')
+      $Pack5 = @('Neovim.Neovim', 'OpenJS.NodeJS', 'JanDeDobbeleer.OhMyPosh', 'o2sh.onefetch', 'JohnMacFarlane.Pandoc', 'PuTTY.PuTTY')
+      $Pack6 = @('BurntSushi.ripgrep.GNU', 'ShareX.ShareX', 'Ookla.Speedtest.CLI', 'dbrgn.tealdeer', 'wez.wezterm', 'ducaale.xh')
+      $Pack7 = @('sxyazi.yazi', 'MikeFarah.yq', 'yt-dlp.yt-dlp', 'ajeetdsouza.zoxide')
+      $Pack1 + $Pack2 + $Pack3 + $Pack4 + $Pack5 + Pack6 + $Pack7 | ForEach-Object { winget install --id $_ --exact --source winget }

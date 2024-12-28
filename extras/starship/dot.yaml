@@ -1,0 +1,4 @@
+linux:
+  installs: curl -sS https://starship.rs/install.sh | sh
+  links:
+    starship.toml: ~/.config/starship.toml

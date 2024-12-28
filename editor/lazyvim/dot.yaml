@@ -1,0 +1,21 @@
+windows:
+  installs:
+    cmd: |
+      Move-Item $Env:LOCALAPPDATA\nvim $Env:LOCALAPPDATA\nvim.bak
+      Move-Item $Env:LOCALAPPDATA\nvim-data $Env:LOCALAPPDATA\nvim-data.bak
+    depends:
+    - neovim
+  links:
+    nvim: ~/AppData/Local/nvim
+
+linux:
+  installs:
+    cmd: |
+      mv ~/.config/nvim{,.bak}
+      mv ~/.local/share/nvim{,.bak}
+      mv ~/.local/state/nvim{,.bak}
+      mv ~/.cache/nvim{,.bak}
+    depends:
+    - neovim
+  links:
+    nvim: ~/.config/nvim
