@@ -21,8 +21,9 @@ Below is the setup for Windows and Linux
 ### For Windows:
 
 ```sh
+# NOTE: All below commands are run in Powershell
+
 # Install Git
-# -----------
 winget install --id Git.Git --exact --source winget
 # OR one can use scoop, however, I recommend installing from either winget / using official Git executable.
 
